@@ -1,14 +1,28 @@
+---
+bibliography: references.bib
+---
+
 # Surface Modeling Techniques for Point Clouds Collected by Laser Scanners( 基于激光扫描点云的表面建模技术：方法、应用与挑战 )
 > - PANZhiqing 24037665G
 
 ## 1. Introduction
 
-> - 激光扫描与点云数据的技术框架
+Laser Scanning 是一种新型测绘技术，可以在极短的时间内获取大量带有三维坐标的数据点（point clouds），因此也被认为是一种大数据生产工具[@s18051641]。 
+
+
+| Platform | System Abbreviation | Scanning Perspective | Scanning Range | Point Cloud Density | Application Areas |
+|--------------|-------------------------|--------------------------|--------------------|-------------------------|-----------------------|
+| Airborne | ALS (Airborne Laser Scanning) | Top view | Surface shape | Relatively sparse | Terrain mapping, forest surveys, 3D urban areas |
+| Vehicle  | MLS (Mobile Laser Scanning) | Side view | Stripe shape | Dense | Road mapping, 3D urban areas |
+| Tripod   | TLS (Terrestrial Laser Scanning) | Side view | Point shape | Dense | Deformation monitoring, reverse engineering |
+| Satellite | SLS (Space-based Laser Scanning) | Top view | Surface shape | Large spot size, low density | Forestry surveys, atmospheric measurements, snow monitoring |
+
+> Table 1. Comparison of LiDAR Systems Mounted on Different Platforms
 
 ### 1.1 技术原理与数据特性
-三维激光扫描仪是一类
-
 激光扫描系统
+
+
 所生产的数据是
 
    - 激光扫描技术：从脉冲式到相位式扫描的原理差异，强调其高精度、非接触式采集能力。
