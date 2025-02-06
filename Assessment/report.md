@@ -7,21 +7,76 @@ bibliography: references.bib
 
 ## 1. Introduction
 
-Laser Scanning 是一种新型测绘技术，可以在极短的时间内获取大量带有三维坐标的数据点（point clouds），因此也被认为是一种大数据生产工具[@s18051641]。 
+Laser Scanning 是一种新型测绘技术，可以在极短的时间内获取大量带有高精度三维坐标的数据点（point clouds），一般情况下能够达到0.4 到 5.4 MB/hectare，因此也被认为是一种大数据生产工具[@s18051641]。 我们可以从 Laser 光源特性、搭载平台、目标应用等角度对 Laser Scanning 系统进行粗略分类。举例来说，对于较大规模的城市场景进行测绘及建模，我们可以使用较强的激光光源结合机载激光扫描系统（ALS）并结合 GPS/IMU 定位技术来获取所需的点云数据；而对于一些小尺度的室内场景，我们可以使用激光光源较弱的（人眼友好型）手持激光扫描设备（TLS）来获取点云数据。
 
+Laser Scanning is a new surveying technology that can obtain a large number of data points with high-precision three-dimensional coordinates in a very short time, generally reaching 0.4 to 5.4 MB/hectare, so it is also considered a big data production tool. [@s18051641] We can roughly classify the Laser Scanning system from the perspective of Laser light source characteristics, platform, target application, etc. For example, for large-scale urban scene surveying and modeling, we can use a strong laser light source combined with an airborne laser scanning system (ALS) and GPS/IMU positioning technology to obtain the required point cloud data; for some small-scale indoor scenes, we can use a laser light source. Weak (eye-friendly) handheld laser scanning device (TLS) to obtain point cloud data.
 
-| Platform | System Abbreviation | Scanning Perspective | Scanning Range | Point Cloud Density | Application Areas |
-|--------------|-------------------------|--------------------------|--------------------|-------------------------|-----------------------|
-| Airborne | ALS (Airborne Laser Scanning) | Top view | Surface shape | Relatively sparse | Terrain mapping, forest surveys, 3D urban areas |
-| Vehicle  | MLS (Mobile Laser Scanning) | Side view | Stripe shape | Dense | Road mapping, 3D urban areas |
-| Tripod   | TLS (Terrestrial Laser Scanning) | Side view | Point shape | Dense | Deformation monitoring, reverse engineering |
-| Satellite | SLS (Space-based Laser Scanning) | Top view | Surface shape | Large spot size, low density | Forestry surveys, atmospheric measurements, snow monitoring |
+```mermaid
+graph LR
+    A[Laser Scanning Systems] --> B[Ranging Principle]
+    A --> C[Laser Type]
+    A --> D[Wavelength]
+    A --> E[Detector Type]
+    A --> F[Platform]
+    A --> G[Target Reflectivity]
 
-> Table 1. Comparison of LiDAR Systems Mounted on Different Platforms
+    B --> B1[Pulsed]
+    B1 -->|High-power, short pulses| B1a[Long-range scanning - Airborne LiDAR]
+    B --> B2[CW Phase-Based]
+    B2 -->|Measures phase difference| B2a[High-precision short-range scanning]
 
-### 1.1 技术原理与数据特性
+    C --> C1[Gas Lasers]
+    C1 -->|High coherence, limited use| C1a[Early scanning systems]
+    C --> C2[Solid-State Lasers]
+    C2 -->|High power, used in pulsed systems| C2a[Airborne & long-range terrestrial LiDAR]
+    C --> C3[Semiconductor Lasers]
+    C3 -->|Compact, cost-effective, eye safety concerns| C3a[Mobile & terrestrial LiDAR]
+
+    D --> D1[800-1000 nm]
+    D1 -->|High sensitivity, eye safety concerns| D1a[Urban mapping, forestry]
+    D --> D2[1535 nm]
+    D2 -->|Eye-safe, reduced sunlight interference| D2a[Long-range airborne LiDAR]
+    D --> D3[810 nm]
+    D3 -->|High reflectivity for ice & snow| D3a[Glacier & snow monitoring]
+
+    E --> E1[PIN Photodiodes]
+    E1 -->|Low sensitivity, short range| E1a[Low-cost or short-range systems]
+    E --> E2[Avalanche Photodiodes]
+    E2 -->|High sensitivity, extended range| E2a[High-performance LiDAR]
+
+    F --> F1[Airborne]
+    F1 -->|Large coverage, sparse points| F1a[Terrain mapping, forestry, urban modeling]
+    F --> F2[Terrestrial]
+    F2 -->|High point density, precise measurements| F2a[Deformation monitoring, cultural heritage]
+    F --> F3[Mobile]
+    F3 -->|Dense point clouds, stripe-shaped coverage| F3a[Road mapping, urban infrastructure]
+    F --> F4[Space-Based]
+    F4 -->|Large spot size, low density| F4a[Forestry, atmospheric, ice monitoring]
+
+    G --> G1[High Reflectivity]
+    G1 -->|Maximizes range| G1a[Urban areas, man-made structures]
+    G --> G2[Low Reflectivity]
+    G2 -->|Reduced range, wavelength-dependent| G2a[Glacier & snow monitoring]
+```
+
+### 1.1 点云数据特征
+
+Laser Scanning 会产生大量
+
+.las、.laz：LiDAR数据的工业标准格式，是一种二进制文件格式。
+.pcd：PCL库官方指定格式。
+.obj：由Alias|Wavefront Techonologies公司从几何学上定义的3D模型文件格式，是一种文本文件。
+.pts：被称之为最简便的点云格式，属于文本格式。只包含点坐标信息，按X Y Z顺序存储。
+.xyz、.txt：一种文本格式。
+
 激光扫描系统
 
+回到我们刚才提到的问题：点云中每个点存储的数据内容是什么？
+
+若使用激光原理得到的点云，每个点除空间坐标(x,y,z)外，还包含激光反射强度(Intensity)
+若使用摄像头原理得到的点云，每个点除空间坐标(x,y,x)外，还包含颜色信息(RGB)
+对于很多 3D 扫描仪来说，能够在近距离对物体扫描得出 3D 模型，包括物体颜色。实际上是摄像头加其他测量工具综合得到的数据结果。
+若使用激光原理 + 摄像头原理得到的点云，每个点除空间(x,y,z)外，还可以同时包含激光反射强度(Intensity) 和 颜色信息(RGB)。
 
 所生产的数据是
 
