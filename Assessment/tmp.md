@@ -1,3 +1,41 @@
+以下是根据提供的内容整理的激光扫描仪分类表格，结构与上一个表格类似：
+
+---
+
+### **Table 2. Classification of Laser Scanning Systems**
+
+| **Category**               | **Subtype**                     | **Key Characteristics**                                                                 | **Typical Applications**                                                                 |
+|----------------------------|---------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| **Ranging Principle**      | Pulsed Ranging                 | - High-power, short-pulse lasers<br>- Solid-state lasers (e.g., Nd:YAG)<br>- Direct energy detection | Long-range measurements (e.g., airborne LiDAR, terrain mapping)                        |
+|                            | Continuous Wave (CW) Phase-Based | - Modulated laser light<br>- Measures phase difference between transmitted/received signals | High-precision short-range measurements (e.g., industrial metrology, deformation monitoring) |
+| **Laser Type**             | Gas Lasers                     | - High coherence<br>- Limited use in modern scanning due to complexity and cost         | Early laser scanning systems                                                            |
+|                            | Solid-State Lasers (e.g., Nd:YAG) | - High power output<br>- Pumped by flash lamps or laser diodes<br>- Common in pulsed systems | Airborne LiDAR, long-range terrestrial scanning                                         |
+|                            | Semiconductor Lasers (Diode Lasers) | - Compact and cost-effective<br>- Wavelengths: 800–1600 nm<br>- Eye safety considerations | Mobile and terrestrial LiDAR systems                                                   |
+| **Wavelength**             | 800–1000 nm                   | - High detector sensitivity<br>- Eye safety concerns at lower wavelengths               | General-purpose scanning (e.g., urban mapping, forestry)                               |
+|                            | 1535 nm                       | - Eye-safe at higher energy levels<br>- Lower background radiation from sunlight        | Long-range airborne LiDAR (e.g., TopoSys systems)                                      |
+|                            | 810 nm                        | - High reflectivity for snow and ice<br>- Suitable for glacier and cryosphere studies   | Snow depth measurement, glacier monitoring                                             |
+| **Detector Type**          | PIN Photodiodes               | - Lower sensitivity<br>- Limited range capabilities                                     | Low-cost or short-range systems                                                        |
+|                            | Avalanche Photodiodes (APD)   | - High sensitivity<br>- Extended range (4–10x compared to PIN diodes)                  | High-performance systems (e.g., airborne and long-range terrestrial LiDAR)             |
+| **Platform**               | Airborne                      | - Top-down scanning perspective<br>- Large coverage area<br>- Relatively sparse point clouds | Terrain mapping, forestry surveys, 3D urban modeling                                   |
+|                            | Terrestrial (Tripod-Mounted)  | - Side-view scanning<br>- High point cloud density<br>- Precise measurements            | Deformation monitoring, reverse engineering, cultural heritage documentation           |
+|                            | Mobile (Vehicle-Mounted)      | - Side-view scanning<br>- Stripe-shaped coverage<br>- Dense point clouds                | Road mapping, urban infrastructure modeling                                            |
+|                            | Space-Based (Satellite)       | - Top-down scanning<br>- Large spot size, low point density                             | Forestry surveys, atmospheric studies, snow and ice monitoring                         |
+| **Target Reflectivity**    | High Reflectivity (e.g., 80%) | - Maximum range achievable<br>- Diffuse or specular targets                             | Urban areas, man-made structures                                                       |
+|                            | Low Reflectivity (e.g., snow, ice) | - Reduced range<br>- Requires wavelength optimization (e.g., 810 nm for snow)          | Glacier monitoring, snow depth measurement                                             |
+
+---
+
+### **Key Insights**
+1. **Ranging Principles**: Pulsed systems dominate long-range applications, while CW phase-based systems excel in high-precision short-range tasks.
+2. **Laser Types**: Solid-state and semiconductor lasers are most common, with semiconductor lasers offering a balance of cost and performance.
+3. **Wavelength Selection**: Wavelength choice depends on application requirements, such as eye safety (1535 nm) or target reflectivity (810 nm for snow).
+4. **Detector Sensitivity**: Avalanche photodiodes (APDs) significantly extend the range and performance of laser scanning systems.
+5. **Platform-Specific Design**: Each platform (airborne, terrestrial, mobile, space-based) is optimized for specific scanning perspectives and applications.
+
+---
+
+This table provides a comprehensive comparison of laser scanning systems, highlighting their technical characteristics and application suitability.
+
 # Surface Modeling Techniques for Point Clouds Collected by Laser Scanners
 
 ## 1. 引言
