@@ -8,6 +8,13 @@ def test():
 pandoc test.md -o test.docx --highlight-style=tango
 ```
 
+```sh
+cd Assessment
+# andoc zn.md --citeproc --csl=apa.csl -o zn.docx
+# pandoc report.md -o report.docx --highlight-style=tango
+pandoc report.md --citeproc --csl=apa.csl -o report.docx --highlight-style=tango
+```
+
 test formular of normal distribution
 $$
 f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2} \left(\frac{x-\mu}{\sigma}\right)^2}

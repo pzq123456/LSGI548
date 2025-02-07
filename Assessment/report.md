@@ -7,78 +7,22 @@ bibliography: references.bib
 
 ## 1. Introduction
 
-Laser Scanning 是一种新型测绘技术，可以在极短的时间内获取大量带有高精度三维坐标的数据点（point clouds），一般情况下能够达到0.4 到 5.4 MB/hectare，因此也被认为是一种大数据生产工具[@s18051641]。 我们可以从 Laser 光源特性、搭载平台、目标应用等角度对 Laser Scanning 系统进行粗略分类。举例来说，对于较大规模的城市场景进行测绘及建模，我们可以使用较强的激光光源结合机载激光扫描系统（ALS）并结合 GPS/IMU 定位技术来获取所需的点云数据；而对于一些小尺度的室内场景，我们可以使用激光光源较弱的（人眼友好型）手持激光扫描设备（TLS）来获取点云数据。
+Laser Scanning 是一种新型测绘技术，可以在极短的时间内获取大量带有高精度三维坐标的数据点（point clouds），一般情况下能够达到0.4 到 5.4 MB/hectare，因此也被认为是一种大数据生产工具[@s18051641]。 我们可以从 Laser 光源特性、搭载平台、目标应用等角度对 Laser Scanning 系统进行粗略分类。举例来说，对于较大规模的城市场景进行测绘及建模，我们可以使用较强的激光光源结合机载激光扫描系统（ALS）并结合 GPS/IMU 定位技术来获取所需的点云数据；而对于一些小尺度的室内场景，我们可以使用激光光源较弱的（人眼友好型）手持激光扫描设备（MLS）来获取点云数据。
 
 Laser Scanning is a new surveying technology that can obtain a large number of data points with high-precision three-dimensional coordinates in a very short time, generally reaching 0.4 to 5.4 MB/hectare, so it is also considered a big data production tool. [@s18051641] We can roughly classify the Laser Scanning system from the perspective of Laser light source characteristics, platform, target application, etc. For example, for large-scale urban scene surveying and modeling, we can use a strong laser light source combined with an airborne laser scanning system (ALS) and GPS/IMU positioning technology to obtain the required point cloud data; for some small-scale indoor scenes, we can use a laser light source. Weak (eye-friendly) handheld laser scanning device (TLS) to obtain point cloud data.
 
-```mermaid
-graph LR
-    A[Laser Scanning Systems] --> B[Ranging Principle]
-    A --> C[Laser Type]
-    A --> D[Wavelength]
-    A --> E[Detector Type]
-    A --> F[Platform]
-    A --> G[Target Reflectivity]
 
-    B --> B1[Pulsed]
-    B1 -->|High-power, short pulses| B1a[Long-range scanning - Airborne LiDAR]
-    B --> B2[CW Phase-Based]
-    B2 -->|Measures phase difference| B2a[High-precision short-range scanning]
 
-    C --> C1[Gas Lasers]
-    C1 -->|High coherence, limited use| C1a[Early scanning systems]
-    C --> C2[Solid-State Lasers]
-    C2 -->|High power, used in pulsed systems| C2a[Airborne & long-range terrestrial LiDAR]
-    C --> C3[Semiconductor Lasers]
-    C3 -->|Compact, cost-effective, eye safety concerns| C3a[Mobile & terrestrial LiDAR]
+![Figure 1.1 Differnt Laser Scanning Systems](./imgs/2.png)
 
-    D --> D1[800-1000 nm]
-    D1 -->|High sensitivity, eye safety concerns| D1a[Urban mapping, forestry]
-    D --> D2[1535 nm]
-    D2 -->|Eye-safe, reduced sunlight interference| D2a[Long-range airborne LiDAR]
-    D --> D3[810 nm]
-    D3 -->|High reflectivity for ice & snow| D3a[Glacier & snow monitoring]
-
-    E --> E1[PIN Photodiodes]
-    E1 -->|Low sensitivity, short range| E1a[Low-cost or short-range systems]
-    E --> E2[Avalanche Photodiodes]
-    E2 -->|High sensitivity, extended range| E2a[High-performance LiDAR]
-
-    F --> F1[Airborne]
-    F1 -->|Large coverage, sparse points| F1a[Terrain mapping, forestry, urban modeling]
-    F --> F2[Terrestrial]
-    F2 -->|High point density, precise measurements| F2a[Deformation monitoring, cultural heritage]
-    F --> F3[Mobile]
-    F3 -->|Dense point clouds, stripe-shaped coverage| F3a[Road mapping, urban infrastructure]
-    F --> F4[Space-Based]
-    F4 -->|Large spot size, low density| F4a[Forestry, atmospheric, ice monitoring]
-
-    G --> G1[High Reflectivity]
-    G1 -->|Maximizes range| G1a[Urban areas, man-made structures]
-    G --> G2[Low Reflectivity]
-    G2 -->|Reduced range, wavelength-dependent| G2a[Glacier & snow monitoring]
-```
+![Figure 1.2 Different Laser Scanning Platforms](./imgs/1.png)
 
 ### 1.1 点云数据特征
 
-Laser Scanning 会产生大量
+激光扫描技术通过非接触式采集方式生成大量点云数据，每个点云数据不仅包含空间坐标信息（x, y, z），还可能根据扫描系统的原理附加不同的属性信息[@9359340]。例如，基于激光原理的扫描系统会在点云中加入激光反射强度（Intensity）或是记录到的反射次数，而基于摄像头原理的系统则会附加颜色信息（RGB）。许多3D扫描仪综合了激光和摄像头技术，能够在近距离扫描物体时同时获取高精度的空间坐标、反射强度、颜色信息和语言信息，从而生成包含多维属性的点云数据。点云数据的存储格式多样，常见的包括`.las`、`.laz`（LiDAR数据的工业标准格式）、`.pcd`（PCL库指定格式）、`.obj`（3D模型文件格式）、`.pts`（仅包含坐标信息的简便格式）以及`.xyz`和`.txt`等文本格式。
 
-.las、.laz：LiDAR数据的工业标准格式，是一种二进制文件格式。
-.pcd：PCL库官方指定格式。
-.obj：由Alias|Wavefront Techonologies公司从几何学上定义的3D模型文件格式，是一种文本文件。
-.pts：被称之为最简便的点云格式，属于文本格式。只包含点坐标信息，按X Y Z顺序存储。
-.xyz、.txt：一种文本格式。
+点云数据在具体应用中具有高度灵活性，例如可以直接以三维的方式呈现搜集到的信息，若再附加纹理信息其可视化效果并不比三角网格差，同时，带有多维属性的点云数据也比一般的三维网格具有更高的信息量。然而，点云数据对于物体或场景的几何信息表达是隐式的（非结构化的），这种数据结构存在存在诸多潜在的问题。例如，点云数据存在稀疏性问题，即空间分布不均匀，一些地方过分稠密（例如植被区域），而另一些地方则过分稀疏（例如遮挡区域）；点云数据容易受到噪声的干扰，空气湍流、植被遮挡、地面反射等因素都会导致点云数据的质量下降；更为复杂的是，点云数据还面临数据冗余（如植被区域的多次回波）与数据缺失（如遮挡区域）的共存矛盾。若希望进一步分析处理点云数据，就不得不使用特定的预处理算法来处理存在噪声、稀疏性等问题的点云数据，而后再进行表面重建等操作。
 
-激光扫描系统
-
-回到我们刚才提到的问题：点云中每个点存储的数据内容是什么？
-
-若使用激光原理得到的点云，每个点除空间坐标(x,y,z)外，还包含激光反射强度(Intensity)
-若使用摄像头原理得到的点云，每个点除空间坐标(x,y,x)外，还包含颜色信息(RGB)
-对于很多 3D 扫描仪来说，能够在近距离对物体扫描得出 3D 模型，包括物体颜色。实际上是摄像头加其他测量工具综合得到的数据结果。
-若使用激光原理 + 摄像头原理得到的点云，每个点除空间(x,y,z)外，还可以同时包含激光反射强度(Intensity) 和 颜色信息(RGB)。
-
-所生产的数据是
 
    - 激光扫描技术：从脉冲式到相位式扫描的原理差异，强调其高精度、非接触式采集能力。
    - 点云数据特征：三维坐标+属性（反射强度、颜色）的多维度特性，分析其非结构化、稀疏性与噪声敏感性。

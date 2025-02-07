@@ -1,3 +1,49 @@
+```mermaid
+graph LR
+    A[Laser Scanning Systems] --> B[Ranging Principle]
+    A --> C[Laser Type]
+    A --> D[Wavelength]
+    A --> E[Detector Type]
+    A --> F[Platform]
+    A --> G[Target Reflectivity]
+
+    B --> B1[Pulsed]
+    B1 --> B1a[Long-range scanning]
+    B --> B2[CW Phase-Based]
+    B2 --> B2a[Short-range scanning]
+
+    C --> C1[Gas Lasers]
+    C1 --> C1a[Early systems]
+    C --> C2[Solid-State Lasers]
+    C2 --> C2a[Airborne & long-range]
+    C --> C3[Semiconductor Lasers]
+    C3 --> C3a[Mobile & terrestrial]
+
+    D --> D1[800-1000 nm]
+    D1 --> D1a[Urban, forestry]
+    D --> D2[1535 nm]
+    D2 --> D2a[Long-range airborne]
+    D --> D3[810 nm]
+    D3 --> D3a[Glacier & snow]
+
+    E --> E1[PIN Photodiodes]
+    E1 --> E1a[Short-range]
+    E --> E2[Avalanche Photodiodes]
+    E2 --> E2a[High-performance]
+
+    F --> F1[Airborne--ALS]
+    F1 --> F1a[Terrain mapping]
+    F --> F2[Terrestrial--TLS]
+    F2 --> F2a[Deformation monitoring]
+    F --> F3[Mobile--MLS]
+    F3 --> F3a[Road mapping]
+
+    G --> G1[High Reflectivity]
+    G1 --> G1a[Urban areas]
+    G --> G2[Low Reflectivity]
+    G2 --> G2a[Glacier & snow]
+```
+
 ### **Simplified Table: Classification of Laser Scanning Systems**  
 
 | **Category**         | **Subtype**                 | **Key Characteristics**                        | **Typical Applications**                      |
