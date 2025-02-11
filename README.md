@@ -15,7 +15,7 @@
 | 18 Feb. | GNSS Principles and Applications |
 | 25 Feb. | Remote sensing, photogrammetry and 3D mapping |
 | 4 Mar. | Spaceborne SAR and InSAR |
-| 11 Mar. | Spatial Data Surveying and Data Infrastructure |
+| 11 Mar. | Spatial Data Surveying and Data Infrastructure **quiz**|
 | 18 Mar. | Laser Scanning & SLAM Technology |
 | 25 Mar. | Advanced technology in deformation surveying and data analysis |
 | 1 Apr. | Hong Kong Cadastral System and Surveying |
