@@ -86,3 +86,111 @@
   ABSTRACT = {The integration of multi-platform, multi-angle, and multi-temporal LiDAR data has become important for geospatial data applications. This paper presents a comprehensive review of LiDAR data registration in the fields of photogrammetry and remote sensing. At present, a coarse-to-fine registration strategy is commonly used for LiDAR point clouds registration. The coarse registration method is first used to achieve a good initial position, based on which registration is then refined utilizing the fine registration method. According to the coarse-to-fine framework, this paper reviews current registration methods and their methodologies, and identifies important differences between them. The lack of standard data and unified evaluation systems is identified as a factor limiting objective comparison of different methods. The paper also describes the most commonly-used point cloud registration error analysis methods. Finally, avenues for future work on LiDAR data registration in terms of applications, data, and technology are discussed. In particular, there is a need to address registration of multi-angle and multi-scale data from various newly available types of LiDAR hardware, which will play an important role in diverse applications such as forest resource surveys, urban energy use, cultural heritage protection, and unmanned vehicles.},
   DOI = {10.3390/s18051641}
 }
+
+@ARTICLE{10777531,
+  author={Sulzer, Raphael and Marlet, Renaud and Vallet, Bruno and Landrieu, Loic},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={A Survey and Benchmark of Automatic Surface Reconstruction From Point Clouds}, 
+  year={2025},
+  volume={47},
+  number={3},
+  pages={2000-2019},
+  keywords={Surface reconstruction;Point cloud compression;Benchmark testing;Surface treatment;Shape;Surveys;Learning systems;Reconstruction algorithms;Image reconstruction;Topology;Benchmark;deep learning;mesh generation;point clouds;surface reconstruction;survey},
+  doi={10.1109/TPAMI.2024.3510932}
+}
+
+@Article{rs11222659,
+  AUTHOR = {Zhu, Lingli and Kukko, Antero and Virtanen, Juho-Pekka and Hyyppä, Juha and Kaartinen, Harri and Hyyppä, Hannu and Turppa, Tuomas},
+  TITLE = {Multisource Point Clouds, Point Simplification and Surface Reconstruction},
+  JOURNAL = {Remote Sensing},
+  VOLUME = {11},
+  YEAR = {2019},
+  NUMBER = {22},
+  ARTICLE-NUMBER = {2659},
+  URL = {https://www.mdpi.com/2072-4292/11/22/2659},
+  ISSN = {2072-4292},
+  ABSTRACT = {As data acquisition technology continues to advance, the improvement and upgrade of the algorithms for surface reconstruction are required. In this paper, we utilized multiple terrestrial Light Detection And Ranging (Lidar) systems to acquire point clouds with different levels of complexity, namely dynamic and rigid targets for surface reconstruction. We propose a robust and effective method to obtain simplified and uniform resample points for surface reconstruction. The method was evaluated. A point reduction of up to 99.371% with a standard deviation of 0.2 cm was achieved. In addition, well-known surface reconstruction methods, i.e., Alpha shapes, Screened Poisson reconstruction (SPR), the Crust, and Algebraic point set surfaces (APSS Marching Cubes), were utilized for object reconstruction. We evaluated the benefits in exploiting simplified and uniform points, as well as different density points, for surface reconstruction. These reconstruction methods and their capacities in handling data imperfections were analyzed and discussed. The findings are that (i) the capacity of surface reconstruction in dealing with diverse objects needs to be improved; (ii) when the number of points reaches the level of millions (e.g., approximately five million points in our data), point simplification is necessary, as otherwise, the reconstruction methods might fail; (iii) for some reconstruction methods, the number of input points is proportional to the number of output meshes; but a few methods are in the opposite; (iv) all reconstruction methods are beneficial from the reduction of running time; and (v) a balance between the geometric details and the level of smoothing is needed. Some methods produce detailed and accurate geometry, but their capacity to deal with data imperfection is poor, while some other methods exhibit the opposite characteristics.},
+  DOI = {10.3390/rs11222659}
+}
+
+@article{HU201498,
+  title = {An adaptive surface filter for airborne laser scanning point clouds by means of regularization and bending energy},
+  journal = {ISPRS Journal of Photogrammetry and Remote Sensing},
+  volume = {92},
+  pages = {98-111},
+  year = {2014},
+  issn = {0924-2716},
+  doi = {https://doi.org/10.1016/j.isprsjprs.2014.02.014},
+  url = {https://www.sciencedirect.com/science/article/pii/S0924271614000525},
+  author = {Han Hu and Yulin Ding and Qing Zhu and Bo Wu and Hui Lin and Zhiqiang Du and Yeting Zhang and Yunsheng Zhang},
+  keywords = {Airborne laser scanning, Point clouds, Filtering, Bending energy, Thin plate spline, DEM},
+  abstract = {The filtering of point clouds is a ubiquitous task in the processing of airborne laser scanning (ALS) data; however, such filtering processes are difficult because of the complex configuration of the terrain features. The classical filtering algorithms rely on the cautious tuning of parameters to handle various landforms. To address the challenge posed by the bundling of different terrain features into a single dataset and to surmount the sensitivity of the parameters, in this study, we propose an adaptive surface filter (ASF) for the classification of ALS point clouds. Based on the principle that the threshold should vary in accordance to the terrain smoothness, the ASF embeds bending energy, which quantitatively depicts the local terrain structure to self-adapt the filter threshold automatically. The ASF employs a step factor to control the data pyramid scheme in which the processing window sizes are reduced progressively, and the ASF gradually interpolates thin plate spline surfaces toward the ground with regularization to handle noise. Using the progressive densification strategy, regularization and self-adaption, both performance improvement and resilience to parameter tuning are achieved. When tested against the benchmark datasets provided by ISPRS, the ASF performs the best in comparison with all other filtering methods, yielding an average total error of 2.85% when optimized and 3.67% when using the same parameter set.}
+}
+
+@ARTICLE{8977383,
+  author={Xia, Shaobo and Chen, Dong and Wang, Ruisheng and Li, Jonathan and Zhang, Xinchang},
+  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, 
+  title={Geometric Primitives in LiDAR Point Clouds: A Review}, 
+  year={2020},
+  volume={13},
+  number={},
+  pages={685-707},
+  keywords={Three-dimensional displays;Laser radar;Shape;Buildings;Image edge detection;Skeleton;Vegetation mapping;Edges;geometric primitives;light detection and ranging (lidar);lines;planes;point clouds;regularization;skeletons;volumetric shapes},
+  doi={10.1109/JSTARS.2020.2969119}
+}
+
+@Article{rs14205099,
+  AUTHOR = {Kermarrec, Gaël and Yang, Zhonglong and Czerwonka-Schröder, Daniel},
+  TITLE = {Classification of Terrestrial Laser Scanner Point Clouds: A Comparison of Methods for Landslide Monitoring from Mathematical Surface Approximation},
+  JOURNAL = {Remote Sensing},
+  VOLUME = {14},
+  YEAR = {2022},
+  NUMBER = {20},
+  ARTICLE-NUMBER = {5099},
+  URL = {https://www.mdpi.com/2072-4292/14/20/5099},
+  ISSN = {2072-4292},
+  ABSTRACT = {Terrestrial laser scanners (TLS) are contact-free measuring sensors that record dense point clouds of objects or scenes by acquiring coordinates and an intensity value for each point. The point clouds are scattered and noisy. Performing a mathematical surface approximation instead of working directly on the point cloud is an efficient way to reduce the data storage and structure the point clouds by transforming “data” to “information”. Applications include rigorous statistical testing for deformation analysis within the context of landslide monitoring. In order to reach an optimal approximation, classification and segmentation algorithms can identify and remove inhomogeneous structures, such as trees or bushes, to obtain a smooth and accurate mathematical surface of the ground. In this contribution, we compare methods to perform the classification of TLS point clouds with the aim of guiding the reader through the existing algorithms. Besides the traditional point cloud filtering methods, we will analyze machine learning classification algorithms based on the manual extraction of point cloud features, and a deep learning approach with automatic extraction of features called PointNet++. We have intentionally chosen strategies easy to implement and understand so that our results are reproducible for similar point clouds. We show that each method has advantages and drawbacks, depending on user criteria, such as the computational time, the classification accuracy needed, whether manual extraction is performed or not, and if prior information is required. We highlight that filtering methods are advantageous for the application at hand and perform a mathematical surface approximation as an illustration. Accordingly, we have chosen locally refined B-splines, which were shown to provide an optimal and computationally manageable approximation of TLS point clouds.},
+  DOI = {10.3390/rs14205099}
+}
+
+@Article{rs13030472,
+  AUTHOR = {Chen, Yang and Liu, Guanlan and Xu, Yaming and Pan, Pai and Xing, Yin},
+  TITLE = {PointNet++ Network Architecture with Individual Point Level and Global Features on Centroid for ALS Point Cloud Classification},
+  JOURNAL = {Remote Sensing},
+  VOLUME = {13},
+  YEAR = {2021},
+  NUMBER = {3},
+  ARTICLE-NUMBER = {472},
+  URL = {https://www.mdpi.com/2072-4292/13/3/472},
+  ISSN = {2072-4292},
+  ABSTRACT = {Airborne laser scanning (ALS) point cloud has been widely used in the fields of ground powerline surveying, forest monitoring, urban modeling, and so on because of the great convenience it brings to people’s daily life. However, the sparsity and uneven distribution of point clouds increases the difficulty of setting uniform parameters for semantic classification. The PointNet++ network is an end-to-end learning network for irregular point data and highly robust to small perturbations of input points along with corruption. It eliminates the need to calculate costly handcrafted features and provides a new paradigm for 3D understanding. However, each local region in the output is abstracted by its centroid and local feature that encodes the centroid’s neighborhood. The feature learned on the centroid point may not contain relevant information of itself for random sampling, especially in large-scale neighborhood balls. Moreover, the centroid point’s global-level information in each sample layer is also not marked. Therefore, this study proposed a modified PointNet++ network architecture which concentrates the point-level and global features on the centroid point towards the local features to facilitate classification. The proposed approach also utilizes a modified Focal Loss function to solve the extremely uneven category distribution on ALS point clouds. An elevation- and distance-based interpolation method is also proposed for the objects in ALS point clouds which exhibit discrepancies in elevation distributions. The experiments on the Vaihingen dataset of the International Society for Photogrammetry and Remote Sensing and the GML(B) 3D dataset demonstrate that the proposed method which provides additional contextual information to support classification achieves high accuracy with simple discriminative models and new state-of-the-art performance in power line categories.},
+  DOI = {10.3390/rs13030472}
+}
+
+@Article{rs14030789,
+  AUTHOR = {Ma, Haichi and Ma, Hongchao and Zhang, Liang and Liu, Ke and Luo, Wenjun},
+  TITLE = {Extracting Urban Road Footprints from Airborne LiDAR Point Clouds with PointNet++ and Two-Step Post-Processing},
+  JOURNAL = {Remote Sensing},
+  VOLUME = {14},
+  YEAR = {2022},
+  NUMBER = {3},
+  ARTICLE-NUMBER = {789},
+  URL = {https://www.mdpi.com/2072-4292/14/3/789},
+  ISSN = {2072-4292},
+  ABSTRACT = {In this paper, a novel framework for the automatic extraction of road footprints from airborne LiDAR point clouds in urban areas is proposed. The extraction process consisted of three phases: The first phase is to extract road points by using the deep learning model PointNet++, where the features of the input data include not only those selected from raw LiDAR points, such as 3D coordinate values, intensity, etc., but also the digital number (DN) of co-registered images and generated geometric features to describe a strip-like road. Then, the road points from PointNet++ were post-processed based on graph-cut and constrained triangulation irregular networks, where both the commission and omission errors were greatly reduced. Finally, collinearity and width similarity were proposed to estimate the connection probability of road segments, thereby improving the connectivity and completeness of the road network represented by centerlines. Experiments conducted on the Vaihingen data show that the proposed framework outperformed others in terms of completeness and correctness; in addition, some narrower residential streets with 2 m width, which have normally been neglected by previous studies, were extracted. The completeness and the correctness of the extracted road points were 84.7% and 79.7%, respectively, while the completeness and the correctness of the extracted centerlines were 97.0% and 86.3%, respectively.},
+  DOI = {10.3390/rs14030789}
+}
+
+@Article{ijgi10090617,
+  AUTHOR = {Yang, Su and Hou, Miaole and Shaker, Ahmed and Li, Songnian},
+  TITLE = {Modeling and Processing of Smart Point Clouds of Cultural Relics with Complex Geometries},
+  JOURNAL = {ISPRS International Journal of Geo-Information},
+  VOLUME = {10},
+  YEAR = {2021},
+  NUMBER = {9},
+  ARTICLE-NUMBER = {617},
+  URL = {https://www.mdpi.com/2220-9964/10/9/617},
+  ISSN = {2220-9964},
+  ABSTRACT = {The digital documentation of cultural relics plays an important role in archiving, protection, and management. In the field of cultural heritage, three-dimensional (3D) point cloud data is effective at expressing complex geometric structures and geometric details on the surface of cultural relics, but lacks semantic information. To elaborate the geometric information of cultural relics and add meaningful semantic information, we propose a modeling and processing method of smart point clouds of cultural relics with complex geometries. An information modeling framework for complex geometric cultural relics was designed based on the concept of smart point clouds, in which 3D point cloud data are organized through the time dimension and different spatial scales indicating different geometric details. The proposed model allows smart point clouds or a subset to be linked with semantic information or related documents. As such, this novel information modeling framework can be used to describe rich semantic information and high-level details of geometry. The proposed information model not only expresses the complex geometric structure of the cultural relics and the geometric details on the surface, but also has rich semantic information, and can even be associated with documents. A case study of the Dazu Thousand-Hand Bodhisattva Statue, which is characterized by a variety of complex geometries, reveals that our proposed framework is capable of modeling and processing the statue with excellent applicability and expansibility. This work provides insights into the sustainable development of cultural heritage protection globally.},
+  DOI = {10.3390/ijgi10090617}
+}

@@ -2,6 +2,15 @@
 > - Spring 2025 
 > - Weight: 20% 
 
+## usefull command
+
+```sh
+cd Assessment
+# andoc zn.md --citeproc --csl=apa.csl -o zn.docx
+# pandoc report.md -o report.docx --highlight-style=tango
+pandoc report.md --citeproc --csl=apa.csl -o report.docx --highlight-style=tango --toc
+```
+
 ## List of topics* 
 | No. | English Title | Chinese Title |
 | --- | --- | --- |
@@ -49,3 +58,4 @@ related to this course).
 - Submit to blackboard by March 18, 2025 
 
 (Please submit to TA: Zhendong ZHANG zhendong.zhang@connect.polyu.hk)
+
