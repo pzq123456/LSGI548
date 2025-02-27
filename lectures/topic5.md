@@ -203,3 +203,15 @@ satellite contain more or less the same errors and biases.
   - Multipath
 
 ## 07 Positioning with Pseudorange & Carrier Phase
+
+## Dilution of Precision (DOP)
+
+| DOP Value | Ratings |
+|-----------|---------|
+| 1         | Ideal   |
+| 1-2       | Excellent |
+| 2-5       | Good    |
+| 5-10      | Moderate |
+| 10-20     | Fair    |
+| 20-50     | Poor    |
+| >50       | Very Poor |

@@ -9,8 +9,6 @@ bibliography: references.bib
 
 Laser Scanning 是一种新型测绘技术，可以在极短的时间内获取大量带有高精度三维坐标的数据点（point clouds），一般情况下能够达到0.4 到 5.4 MB/hectare，因此也被认为是一种大数据生产工具[@s18051641]。 我们可以从 Laser 光源特性、搭载平台、目标应用等角度对 Laser Scanning 系统进行粗略分类。举例来说，对于较大规模的城市场景进行测绘及建模，我们可以使用较强的激光光源结合机载激光扫描系统（ALS）并结合 GPS/IMU 定位技术来获取所需的点云数据；而对于一些小尺度的室内场景，我们可以使用激光光源较弱的（人眼友好型）手持激光扫描设备（MLS）来获取点云数据。
 
-Laser Scanning is a new surveying technology that can obtain a large number of data points with high-precision three-dimensional coordinates in a very short time, generally reaching 0.4 to 5.4 MB/hectare, so it is also considered a big data production tool. [@s18051641] We can roughly classify the Laser Scanning system from the perspective of Laser light source characteristics, platform, target application, etc. For example, for large-scale urban scene surveying and modeling, we can use a strong laser light source combined with an airborne laser scanning system (ALS) and GPS/IMU positioning technology to obtain the required point cloud data; for some small-scale indoor scenes, we can use a laser light source. Weak (eye-friendly) handheld laser scanning device (TLS) to obtain point cloud data.
-
 
 ![Figure 1.1 Differnt Laser Scanning Systems](./imgs/2.png)
 
@@ -18,8 +16,6 @@ Laser Scanning is a new surveying technology that can obtain a large number of d
 > a) Terrestrial Laser Scanning (TLS) b) Airborne Laser Scanning (ALS) c) Mobile Laser Scanning (MLS)
 
 点云数据仅仅是一些列带有坐标信息的点，是一种非结构化的数据结构。这种非结构化的数据应用场景有限，例如不能做进一步的物理模拟（诸如流场模拟、碰撞检测）等。在计算机科学及其他一些工程领域，需要一种连续的表面表示来描述物体或场景（三角网格、参数化曲面）。点云数据的表面重建是一个非常重要的研究方向，它可以将点云数据转换为连续的表面表示，从而可以应用到更多的领域中。
-
-Point cloud data is just a series of points with coordinate information, which is a kind of unstructured data structure. This unstructured data has limited application scenarios, such as not being able to do further physical simulation (such as flow field simulation, collision detection), etc. In computer science and some other engineering fields, a continuous surface representation is needed to describe objects or scenes (triangular mesh, parameterized surface). Surface reconstruction of point cloud data is a very important research direction, which can convert point cloud data into a continuous surface representation, so that it can be applied to more fields.
 
 ### 1.1 点云数据特征
 
@@ -41,7 +37,7 @@ $$
 
 ## 2. Methods and Techniques for Point Cloud Surface Modeling
 
-**一个三角网格是通过参考点云使用泊松表面重建方法创建的。与其他方法（如球面枢轴(ball pivoting)、alpha形状(alpha shapes)和Marching Cubes）相比，这种方法更受欢迎，因为它对于封闭几何体产生更好的结果，并确保了拓扑正确性。此外，与其他方法相比，泊松表面重建对传感器噪声更具鲁棒性。因此，噪声被有效地滤除，生成了一个光滑的曲面，准确地表示了几何形状。此外，通过多次测量获得的参考点云的高点密度进一步提高了重建几何形状的准确性。**
+一个三角网格是通过参考点云使用泊松表面重建方法创建的。与其他方法（如球面枢轴(ball pivoting)、alpha形状(alpha shapes)和Marching Cubes）相比，这种方法更受欢迎，因为它对于封闭几何体产生更好的结果，并确保了拓扑正确性。此外，与其他方法相比，泊松表面重建对传感器噪声更具鲁棒性。因此，噪声被有效地滤除，生成了一个光滑的曲面，准确地表示了几何形状。此外，通过多次测量获得的参考点云的高点密度进一步提高了重建几何形状的准确性。
 
 
 > 表面建模方法的技术谱系与创新
@@ -72,10 +68,6 @@ Neural surface reconstruction (NSR) methods
 
    趋势分析：  
    > 传统算法（如泊松重建）依赖全局优化，而AI驱动的方法通过局部特征学习更适应复杂场景，但需解决小样本训练与物理可解释性的矛盾。
-
-
-
-
 
 ## 3. Application Scenarios and Technical Demands
 > 应用场景驱动的技术差异化需求
@@ -117,75 +109,3 @@ Neural surface reconstruction (NSR) methods
 ## 5. Conclusion
 
 激光扫描点云表面建模技术已形成从数据采集到智能应用的完整链条，但其发展仍受限于三组矛盾：效率与精度的博弈、自动化与可控性的冲突、通用性与场景特异性的平衡。未来研究需以“场景定义技术”为导向，结合物理模型与数据驱动方法，构建兼具数学严谨性与工程实用性的新一代建模框架。
-
-
-
-
-### 二、曲面的表示、性质与重建
-
-在本节中，我们首先定义曲面的概念及其数学和数字表示。接着，我们讨论重建曲面的最关键性质。最后，我们根据曲面的数学表示（参数化或隐式）对本文综述中的曲面重建算法进行分类。
-
-在本文中，我们使用以下符号：
-- \( P \) 表示输入的点云，
-- \( S_r \) 表示重建的曲面，
-- \( S_g \) 表示从中采样点云 \( P \) 的真实曲面。
-
-#### A. 表示方法
-
-曲面被定义为一个可定向的、连续的二维流形，嵌入在三维空间 \( \mathbb{R}^3 \) 中，可能有边界，也可能没有边界。这些性质对于曲面的可视化和处理具有重要意义，我们将在后续章节中详细讨论。
-
-从数学角度来看，曲面的表示主要分为两类：**参数化曲面**和**隐式曲面**。
-
-1. **参数化曲面**：  
-   这类曲面通过一个连续且双射的函数 \( f: \Omega \rightarrow S_g \) 表示，该函数将参数域 \( \Omega \in \mathbb{R}^2 \)（例如 \([-1, 1]^2\)）映射到三维曲面 \( S_g = f(\Omega) \in \mathbb{R}^3 \)。然而，对于复杂的曲面，设计一个单一的函数进行参数化可能是不现实的。因此，参数域 \( \Omega \) 通常被划分为较小的子区域，每个子区域都有自己的函数。通常，\( \Omega \) 被划分为三角形。近似 \( S_g \) 的一组三角形可以高效地存储和处理为三角形表面网格 \( M = (V, E, F) \)，其中 \( V \) 表示三角形的顶点，\( E \) 表示边，\( F \) 表示面。
-
-2. **隐式曲面**：  
-   这类曲面由标量值函数 \( F: \mathbb{R}^3 \rightarrow \mathbb{R} \) 的等值面 \( c \) 定义：
-   \[
-   S_g^c = \{ x \in \mathbb{R}^3 \mid F(x) = c \}.
-   \]
-   最常见的 \( F \) 选择是**有符号距离函数（SDF）**或**占用函数（OF）**。SDF 给出一个三维点到曲面最近部分的距离，曲面内部的点被赋予负值，外部的点被赋予正值。OF 通常在曲面内部为 1，外部为 0。\( F \) 的等值面 \( c \) 表示曲面 \( S_g \)，对于 SDF，\( c = 0 \)，对于 OF，\( c = 0.5 \)。与参数化情况类似，隐式函数的定义域通常被划分为子区域，如体素、八叉树节点或四面体。在实践中，隐式曲面通常会被转换为参数化网格，以便于后续应用的处理。
-
-#### B. 性质
-
-我们希望重建的曲面 \( S_r \) 在几何和拓扑上与真实曲面 \( S_g \) 接近。真实曲面具有一些内在性质，如**封闭性（watertightness）**、**流形性（manifoldness）**和**可定向性（orientability）**，这些性质对于许多后续应用至关重要。因此，重建曲面 \( S_r \) 也应具备这些性质。本节中，我们在网格表示的背景下定义这些性质。
-
-1. **封闭性**：  
-   几何曲面被认为是封闭的（或水密的），当它没有边界时。这意味着它形成一个连续且不间断的表面，包围一个有限的体积，没有间隙或开口。例如，球体是一个封闭曲面，因为可以在其表面上任意移动而不会遇到任何边界。  
-   网格 \( M \) 是无边界的（或封闭的），如果没有边仅属于一个面：每条边应被两个面共享以避免间隙。在实践中，由于扫描覆盖范围的有限性，从现实场景重建的曲面必然会有边界。因此，我们定义一个曲面为封闭的，如果它除了与定义域边界的交集中没有其他边界。
-
-2. **流形性**：  
-   真实和几何曲面是二维流形的，当且仅当其任何点的局部邻域与欧几里得平面的开子集同胚。换句话说，曲面的每个足够小的区域，无论其曲率如何，都可以连续变形为二维平面。  
-   网格 \( M \) 是流形的，如果它具有以下属性：
-   - **边流形性**：对于每条边 \( E \)，共享该边的面集形成一个拓扑半圆盘。这意味着没有边可以属于超过两个面。
-   - **顶点流形性**：对于每个顶点 \( V \)，共享该顶点的面集形成一个拓扑半圆盘。这意味着共享一个顶点的面组织成一个开放或闭合的扇形。
-   - **无自交性**：所有不共享边或顶点的面对不相交。
-
-3. **可定向性**：  
-   网格 \( M \) 是可定向的，当且仅当可以一致地为其面分配一个方向（或“侧面”），使得相邻的面始终共享相同的方向。这允许我们区分网格的“内部”和“外部”。如果顶点的顺序决定了外法线的方向（使用右手定则），则顶点的顺序也需要一致。具体来说，当两个面共享一条边时，共享顶点的顺序应相反。
-
-封闭性对于流体动力学等物理模拟至关重要。流形性和可定向性是某些网格数据结构（如广泛使用的半边结构）的前提条件。这些结构确保在几何变换、拓扑修改和各种网格优化和查询操作中的一致性和可预测性。最后，无自交和可定向的曲面导致明确的内部和外部概念，这对于网格可视化和各种几何操作和度量非常重要。
-
-#### C. 重建
-
-从点云重建曲面是指创建一个连续的曲面，近似于从中采样三维点的原始曲面。在我们的综述中，我们将点云曲面重建方法分为两类：**基于曲面的方法**和**基于体积的方法**。
-
-1. **基于曲面的方法**：  
-   这些方法专注于找到一个或多个参数化曲面 \( S_r \)，以三角形或二维（2D）面片的形式近似输入点云 \( P \)，或者通过变形参数化的包围包络（如网格化的球体）来实现。基于曲面的方法的主要限制是，参数域 \( \Omega \) 的拓扑必须与真实曲面 \( S \) 的拓扑等价，而这通常是未知的。相反，定义 \( S_r \) 的基于曲面的方法的主要挑战是保证子曲面之间的一致过渡。特别是，保持最终曲面无自交、流形和封闭是困难的。
-
-2. **基于体积的方法**：  
-   这些方法将 \( \mathbb{R}^3 \) 的一个子集划分为内部（内部）和外部（外部）子空间。曲面被隐式定义为这两个子空间之间的界面。大多数（但不是全部）此类算法将问题表述为找到一个隐式函数，指示空间中的点是满的（内部）还是空的（外部）。使用基于体积的方法重建的曲面保证是封闭且无自交的，但不一定是流形的。
-
-3. **网格提取**：  
-   基于曲面的方法通常直接生成网格，例如通过对 \( \Omega \) 进行三角剖分。相比之下，基于体积的方法通常需要额外的处理步骤。如果隐式场使用三维 Delaunay 四面体剖分（3DT）离散化为四面体，则可以从所有与一个内部四面体和一个外部四面体相邻的三角形构建网格。另一种选择是 Boissonnat 和 Oudot 的算法，该算法通过绘制穿过体积的线并从它们与底层曲面 \( S \) 的交点构建三角形网格来迭代采样隐式函数 \( F \)。  
-   从隐式场提取网格的最流行方法之一是**Marching Cubes**，它将隐式函数离散化为体素，在每个至少有一个内部顶点和一个外部顶点的体素内构建三角形，并提取所有三角形的并集作为三角剖分。最近，网格提取也通过深度学习方法得到解决。神经网格化特别解决了隐式函数编码在神经网络权重中的情况，并旨在提取比 Marching Cubes 更少三角形的网格。一个新颖的方法是利用 Voronoi 图从隐式函数中提取简洁的多边形网格。
-
-#### 鲁棒性
-
-当点云 \( P \) 密集采样且无噪声时，基于曲面和基于体积的方法都可以提供关于重建曲面拓扑和几何的理论保证。然而，在本文中，我们关注的是各种方法对来自 3D 扫描的有缺陷输入点云的鲁棒性。
-
-#### 输入
-
-输入点云的特性主要取决于用于获取它们的传感器。
-- **LiDAR 点云**：通常提供高精度和准确性，由于主动传感器对挑战性条件的鲁棒性，噪声或异常值较少。然而，LiDAR 点云通常由于传感器的有限视野而遭受遮挡。
-- **基于图像的点云**：使用称为多视图立体（MVS）的技术生成。它们的质量在很大程度上取决于输入图像的质量和数量。
