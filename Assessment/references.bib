@@ -266,3 +266,70 @@ doi = {10.1561/2300000035}
   keywords={Image reconstruction;Surface reconstruction;Point cloud compression;Laser radar;Surveys;Surface emitting lasers;Deep learning;Three-dimensional displays;Geometric modeling;Machine learning;3-D deep learning (DL);3-D surface reconstruction;geometric DL;geometry processing;machine learning},
   doi={10.1109/JPROC.2023.3321433}
 }
+
+@article{3480518,
+  author = {Chen, Zhiqin and Zhang, Hao},
+  title = {Neural marching cubes},
+  year = {2021},
+  issue_date = {December 2021},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {40},
+  number = {6},
+  issn = {0730-0301},
+  url = {https://doi.org/10.1145/3478513.3480518},
+  doi = {10.1145/3478513.3480518},
+  abstract = {We introduce Neural Marching Cubes, a data-driven approach for extracting a triangle mesh from a discretized implicit field. We base our meshing approach on Marching Cubes (MC), due to the simplicity of its input, namely a uniform grid of signed distances or occupancies, which frequently arise in surface reconstruction and from neural implicit models. However, classical MC is defined by coarse tessellation templates isolated to individual cubes. While more refined tessellations have been proposed by several MC variants, they all make heuristic assumptions, such as trilinearity, when determining the vertex positions and local mesh topologies in each cube. In principle, none of these approaches can reconstruct geometric features that reveal coherence or dependencies between nearby cubes (e.g., a sharp edge), as such information is unaccounted for, resulting in poor estimates of the true underlying implicit field. To tackle these challenges, we re-cast MC from a deep learning perspective, by designing tessellation templates more apt at preserving geometric features, and learning the vertex positions and mesh topologies from training meshes, to account for contextual information from nearby cubes. We develop a compact per-cube parameterization to represent the output triangle mesh, while being compatible with neural processing, so that a simple 3D convolutional network can be employed for the training. We show that all topological cases in each cube that are applicable to our design can be easily derived using our representation, and the resulting tessellations can also be obtained naturally and efficiently by following a few design guidelines. In addition, our network learns local features with limited receptive fields, hence it generalizes well to new shapes and new datasets. We evaluate our neural MC approach by quantitative and qualitative comparisons to all well-known MC variants. In particular, we demonstrate the ability of our network to recover sharp features such as edges and corners, a long-standing issue of MC and its variants. Our network also reconstructs local mesh topologies more accurately than previous approaches. Code and data are available at https://github.com/czq142857/NMC.},
+  journal = {ACM Trans. Graph.},
+  month = dec,
+  articleno = {251},
+  numpages = {15},
+  keywords = {isosurface, machine learning, surface reconstruction}
+}
+
+@article{3555441,
+  author = {Sell\'{a}n, Silvia and Jacobson, Alec},
+  title = {Stochastic Poisson Surface Reconstruction},
+  year = {2022},
+  issue_date = {December 2022},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {41},
+  number = {6},
+  issn = {0730-0301},
+  url = {https://doi.org/10.1145/3550454.3555441},
+  doi = {10.1145/3550454.3555441},
+  abstract = {We introduce a statistical extension of the classic Poisson Surface Reconstruction algorithm for recovering shapes from 3D point clouds. Instead of outputting an implicit function, we represent the reconstructed shape as a modified Gaussian Process, which allows us to conduct statistical queries (e.g., the likelihood of a point in space being on the surface or inside a solid). We show that this perspective: improves PSR's integration into the online scanning process, broadens its application realm, and opens the door to other lines of research such as applying task-specific priors.},
+  journal = {ACM Trans. Graph.},
+  month = nov,
+  articleno = {227},
+  numpages = {12},
+  keywords = {gaussian processes, surface reconstruction, uncertain geometry processing}
+}
+
+@inproceedings{1281965,
+  author = {Kazhdan, Michael and Bolitho, Matthew and Hoppe, Hugues},
+  title = {Poisson surface reconstruction},
+  year = {2006},
+  isbn = {3905673363},
+  publisher = {Eurographics Association},
+  address = {Goslar, DEU},
+  abstract = {We show that surface reconstruction from oriented points can be cast as a spatial Poisson problem. This Poisson formulation considers all the points at once, without resorting to heuristic spatial partitioning or blending, and is therefore highly resilient to data noise. Unlike radial basis function schemes, our Poisson approach allows a hierarchy of locally supported basis functions, and therefore the solution reduces to a well conditioned sparse linear system. We describe a spatially adaptive multiscale algorithm whose time and space complexities are proportional to the size of the reconstructed model. Experimenting with publicly available scan data, we demonstrate reconstruction of surfaces with greater detail than previously achievable.},
+  booktitle = {Proceedings of the Fourth Eurographics Symposium on Geometry Processing},
+  pages = {61–70},
+  numpages = {10},
+  location = {Cagliari, Sardinia, Italy},
+  series = {SGP '06}
+}
+
+@inbook{9781611977912,
+  author = {Ángel Javier Alonso and Michael Kerber and Tung Lam and Michael Lesnick},
+  title = {Delaunay Bifiltrations of Functions on Point Clouds},
+  booktitle = {Proceedings of the 2024 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA)},
+  chapter = {},
+  pages = {4872-4891},
+  doi = {10.1137/1.9781611977912.173},
+  URL = {https://epubs.siam.org/doi/abs/10.1137/1.9781611977912.173},
+  eprint = {https://epubs.siam.org/doi/pdf/10.1137/1.9781611977912.173},
+  abstract = { Abstract The Delaunay filtration D.(X) of a point cloud X ⊂ ℝd is a central tool of computational topology. Its use is justified by the topological equivalence of D. (X) and the offset (i.e., union-of-balls) filtration of X. Given a function γ : X → ℝ, we introduce a Delaunay bifiltration DC.(γ) that satisfies an analogous topological equivalence, ensuring that DC. (γ) topologically encodes the offset filtrations of all sublevel sets of γ, as well as the topological relations between them. DC.(γ) is of size , which for d odd matches the worst-case size of D. (X). Adapting the Bowyer-Watson algorithm for computing Delaunay triangulations, we give a simple, practical algorithm to compute DC.(γ) in time Our implementation, based on CGAL, computes DC. (γ) with modest overhead compared to computing D. (X), and handles tens of thousands of points in ℝ3 within seconds. }
+}
