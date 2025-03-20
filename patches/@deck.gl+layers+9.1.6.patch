@@ -1,0 +1,26 @@
+diff --git a/node_modules/@deck.gl/layers/dist/line-layer/line-layer.js b/node_modules/@deck.gl/layers/dist/line-layer/line-layer.js
+index fe2497c..4649c75 100644
+--- a/node_modules/@deck.gl/layers/dist/line-layer/line-layer.js
++++ b/node_modules/@deck.gl/layers/dist/line-layer/line-layer.js
+@@ -4,7 +4,7 @@
+ import { Layer, project32, picking, UNIT } from '@deck.gl/core';
+ import { Model, Geometry } from '@luma.gl/engine';
+ import { lineUniforms } from "./line-layer-uniforms.js";
+-import { shaderWGSL as source } from './line-layer.wgsl';
++import { shaderWGSL as source } from './line-layer.wgsl.js';
+ import vs from "./line-layer-vertex.glsl.js";
+ import fs from "./line-layer-fragment.glsl.js";
+ const DEFAULT_COLOR = [0, 0, 0, 255];
+diff --git a/node_modules/@deck.gl/layers/dist/scatterplot-layer/scatterplot-layer.js b/node_modules/@deck.gl/layers/dist/scatterplot-layer/scatterplot-layer.js
+index 6dfb79f..34c8fca 100644
+--- a/node_modules/@deck.gl/layers/dist/scatterplot-layer/scatterplot-layer.js
++++ b/node_modules/@deck.gl/layers/dist/scatterplot-layer/scatterplot-layer.js
+@@ -6,7 +6,7 @@ import { Model, Geometry } from '@luma.gl/engine';
+ import { scatterplotUniforms } from "./scatterplot-layer-uniforms.js";
+ import vs from "./scatterplot-layer-vertex.glsl.js";
+ import fs from "./scatterplot-layer-fragment.glsl.js";
+-import source from './scatterplot-layer.wgsl';
++import source from './scatterplot-layer.wgsl.js';
+ const DEFAULT_COLOR = [0, 0, 0, 255];
+ const defaultProps = {
+     radiusUnits: 'meters',

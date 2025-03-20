@@ -10,8 +10,13 @@ export const viteConfig = {
       alias: 
         {
           '@': path.resolve(__dirname,'..', 'src'),
-        }
+          './scatterplot-layer.wgsl': path.resolve(__dirname, '../../node_modules/@deck.gl/layers/dist/scatterplot-layer/scatterplot-layer.wgsl.js')
+        },
+      extensions: ['.js', '.ts'],
+      // assetsInclude: ['**/*.wgsl.js']
     },
+
+    
 
     // 优化 esbuild 打包 用于支持 commonjs 模块
     // 需要安装 vite-plugin-commonjs 插件

@@ -1,0 +1,13 @@
+diff --git a/node_modules/@deck.gl/core/dist/shaderlib/project/project.js b/node_modules/@deck.gl/core/dist/shaderlib/project/project.js
+index 6a32bc1..f5baebe 100644
+--- a/node_modules/@deck.gl/core/dist/shaderlib/project/project.js
++++ b/node_modules/@deck.gl/core/dist/shaderlib/project/project.js
+@@ -4,7 +4,7 @@
+ import { fp32 } from '@luma.gl/shadertools';
+ import geometry from "../misc/geometry.js";
+ import { getUniformsFromViewport } from "./viewport-uniforms.js";
+-import { projectWGSL } from './project.wgsl';
++import { projectWGSL } from './project.wgsl.js';
+ import { projectGLSL } from "./project.glsl.js";
+ const INITIAL_MODULE_OPTIONS = {};
+ function getUniforms(opts = INITIAL_MODULE_OPTIONS) {

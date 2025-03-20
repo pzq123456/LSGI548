@@ -1,19 +1,21 @@
 {
   "devDependencies": {
+    "patch-package": "^8.0.0",
     "vitepress": "^1.6.3"
   },
   "dependencies": {
-    "@deck.gl/core": "latest",
-    "@deck.gl/geo-layers": "latest",
-    "@deck.gl/layers": "latest",
-    "@deck.gl/mapbox": "latest",
-    "@loaders.gl/3d-tiles": "latest",
+    "@deck.gl/core": "^9.1.0",
+    "@deck.gl/geo-layers": "^9.1.0",
+    "@deck.gl/layers": "^9.1.0",
+    "@deck.gl/mapbox": "^9.1.0",
+    "@loaders.gl/3d-tiles": "^4.2.0",
     "lodash": "^4.17.21",
-    "maplibre-gl": "latest"
+    "maplibre-gl": "^5.0.0"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "postinstall": "patch-package"
   }
 }
