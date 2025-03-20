@@ -22,4 +22,12 @@ dist-ssr
 *.sln
 *.sw?
 
+.venv
+
 cache
+
+/project/data/download-107f0457-4942-4be5-bfa1-4094bc519b32
+/project/data/download-107f0457-4942-4be5-bfa1-4094bc519b32.zip
+project/data/building_points_wgs84.las
+project/data/ground_points_wgs84.las
+project/data/vegetation_points_wgs84.las
