@@ -25,11 +25,11 @@ const ION_TOKEN =
 const TILESET_URL = `https://assets.ion.cesium.com/${ION_ASSET_ID}/tileset.json`;
 
 const INITIAL_VIEW_STATE = {
-  // 22.304673905663638, 114.17991663624917
   latitude: 114.17991663624917,
   longitude: 22.304673905663638,
-  pitch: 45,
+  pitch: 60, // 视觉优化：提高俯仰角，使 3D 更明显
   zoom: 16,
+  bearing: 30, // 视觉优化：增加旋转角度，增强立体感
 };
 
 // Vue 响应式引用
@@ -56,16 +56,32 @@ function onTilesetLoad(tileset) {
   }
 }
 
-// 3D 瓦片图层
+// 3D 瓦片图层（优化拾取和视觉效果）
 const tile3DLayer = new Tile3DLayer({
   id: 'tile-3d-layer',
-  pointSize: 3,
-  pickable: false, // 设置点云图层不可交互
-  elevation: 100, // 抬升 100 米
   data: TILESET_URL,
   loader: CesiumIonLoader,
   loadOptions: { 'cesium-ion': { accessToken: ION_TOKEN } },
-  onTilesetLoad
+  pointSize: 2, // 视觉优化：调整点大小
+  pickable: true, // 启用拾取
+  opacity: 0.8, // 视觉优化：增加透明度，柔和显示
+  getColor: d => [255, 140, 0, 180], // 视觉优化：增强颜色对比
+
+  onTilesetLoad,
+
+  // // 交互优化：点击点时打印信息
+  // onClick: ({ object, x, y }) => {
+  //   if (object) {
+  //     console.log(`📍 点击点坐标：(${x}, ${y})`, object);
+  //   }
+  // },
+
+  // // 交互优化：鼠标悬停时高亮
+  // onHover: ({ object, picked }) => {
+  //   if (picked) {
+  //     console.log("✨ 悬停点信息：", object);
+  //   }
+  // }
 });
 
 // 处理地图加载
