@@ -19,7 +19,7 @@ import { useDeckOverlay } from '@/composables/useDeckOverlay.js';
 import { Tile3DLayer } from '@deck.gl/geo-layers';
 import { CesiumIonLoader } from '@loaders.gl/3d-tiles';
 
-const ION_ASSET_ID = 3242856;
+const ION_ASSET_ID = 3253855; // 新增 Z 座
 const ION_TOKEN =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjZGFkYWNkOS1jNmRiLTQ1ZmUtODExMi1hN2E2NTNkYTQ2MzgiLCJpZCI6MTQ0NzkwLCJpYXQiOjE2ODYwMjk5MTd9.UQB3F_dFJVONKtmnPBHGoiN3Myd2Ncus9noUj3nQOeo';
 const TILESET_URL = `https://assets.ion.cesium.com/${ION_ASSET_ID}/tileset.json`;
