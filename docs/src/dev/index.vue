@@ -1,9 +1,10 @@
 <template>
     <div>
         <div class="button-group">
-            <button @click="currentComponent = myApp">Example 1 默认绘制</button>
-            <button @click="currentComponent = myApp2">Example 2 光照模拟</button>
-            <button @click="currentComponent = myApp3">Example 3 3D 瓦片</button>
+            <button @click="currentComponent = myApp">Example 1</button>
+            <button @click="currentComponent = myApp2">Example 2</button>
+            <button @click="currentComponent = myApp3">Example 3</button>
+            <button @click="currentComponent = myApp4">Example 4</button>
         </div>
         <component :is="currentComponent" />
     </div>
@@ -14,8 +15,9 @@ import { shallowRef } from 'vue';
 import myApp from '@/dev/dev1.vue'
 import myApp2 from '@/dev/dev2.vue'
 import myApp3 from '@/dev/dev3.vue'
+import myApp4 from '@/dev/dev4.vue'
 
-const currentComponent = shallowRef(myApp3) // 默认使用 myApp 组件
+const currentComponent = shallowRef(myApp4) // 默认使用 myApp 组件
 </script>
 
 <style scoped>
