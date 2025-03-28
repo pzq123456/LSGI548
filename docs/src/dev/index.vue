@@ -19,7 +19,7 @@ import myApp3 from '@/dev/dev3.vue'
 import myApp4 from '@/dev/dev4.vue'
 import myApp5 from '@/dev/dev5.vue'
 
-const currentComponent = shallowRef(myApp4) // 默认使用 myApp 组件
+const currentComponent = shallowRef(myApp5) // 默认使用 myApp 组件
 </script>
 
 <style scoped>
