@@ -5,6 +5,7 @@
             <button @click="currentComponent = myApp2">Example 2</button>
             <button @click="currentComponent = myApp3">Example 3</button>
             <button @click="currentComponent = myApp4">Example 4</button>
+            <button @click="currentComponent = myApp5">Example 5</button>
         </div>
         <component :is="currentComponent" />
     </div>
@@ -16,6 +17,7 @@ import myApp from '@/dev/dev1.vue'
 import myApp2 from '@/dev/dev2.vue'
 import myApp3 from '@/dev/dev3.vue'
 import myApp4 from '@/dev/dev4.vue'
+import myApp5 from '@/dev/dev5.vue'
 
 const currentComponent = shallowRef(myApp4) // 默认使用 myApp 组件
 </script>
