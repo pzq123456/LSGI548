@@ -474,7 +474,7 @@
           "fclass": "building",
           "name": "D棟 Core D",
           "type": "university",
-          "height": 50
+          "height": 40
         }
       },
       {
@@ -726,7 +726,7 @@
           "fclass": "building",
           "name": "賽馬會綜藝館 Jockey Club Auditorium",
           "type": " ",
-          "height": 50
+          "height": 20
   
         }
       },
@@ -811,7 +811,7 @@
           "fclass": "building",
           "name": "何耀光樓/工業中心 Ho Iu Kwong Building/ Industrial Centre",
           "type": "university",
-          "height": 50
+          "height": 40
         }
       },
       {
@@ -1188,7 +1188,7 @@
           "fclass": "building",
           "name": "陳鮑雪瑩樓 Shirley Chan Building",
           "type": "university",
-          "height": 50
+          "height": 60
         }
       },
       {
@@ -1274,7 +1274,7 @@
           "fclass": "building",
           "name": "香港中華廠商聯合會樓 CMA Building",
           "type": "university",
-          "height": 30
+          "height": 40
         }
       },
       {
@@ -1397,7 +1397,7 @@
           "fclass": "building",
           "name": "鍾士元樓 Chung Sze Yuen Building",
           "type": "university",
-          "height": 50
+          "height": 40
         }
       },
       {
@@ -1467,7 +1467,7 @@
           "fclass": "building",
           "name": "方樹泉堂 Fong Shu Chuen Hall",
           "type": "university",
-          "height": 20
+          "height": 10
         }
       },
       {
@@ -1537,7 +1537,7 @@
           "fclass": "building",
           "name": "GH翼 GH Wing",
           "type": "university",
-          "height": 30
+          "height": 50
         }
       },
       {
@@ -1651,7 +1651,7 @@
           "fclass": "building",
           "name": "邵逸夫樓 Shaw Amenities Building",
           "type": "university",
-          "height": 50
+          "height": 20
         }
       },
       {
@@ -1721,7 +1721,7 @@
           "fclass": "building",
           "name": "何鴻燊樓 Stanley Ho Building",
           "type": "university",
-          "height": 50
+          "height": 40
         }
       },
       {
@@ -1848,7 +1848,7 @@
           "fclass": "building",
           "name": "Block N",
           "type": "university",
-          "height": 50
+          "height": 20
         }
       },
       {
@@ -1905,7 +1905,8 @@
           "code": 1500,
           "fclass": "building",
           "name": "創新館 House of Innovation",
-          "type": "university"
+          "type": "university",
+          "height": 20
         }
       },
       {

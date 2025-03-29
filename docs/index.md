@@ -4,8 +4,11 @@ layout: home
 
 hero:
   name: "PolyU Point Cloud Map"
-  text: "PolyU Point Cloud Map"
-  tagline: My great project tagline
+  tagline: "A point cloud map of The Hong Kong Polytechnic University in 3D Scene"
+  image:
+    src: /logo.png  
+    alt: PolyU Point Cloud Map  
+    style: "border-radius: 50%; width: 200px; height: 200px;"
   actions:
     - theme: brand
       text: dev
@@ -15,11 +18,11 @@ hero:
       link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Real Life Data
+    details: We use real life data.
+  - title: LiDAR Data combined with WebGIS
+    details: We provide LiDAR data combined with WebGIS.
+  - title: Dynamic Lighting
+    details: We provide dynamic lighting.
 ---
 
