@@ -1,7 +1,9 @@
 {
   "devDependencies": {
     "patch-package": "^8.0.0",
-    "vitepress": "^1.6.3"
+    "vitepress": "^1.6.3",
+    "unplugin-auto-import": "^19.0.0",
+    "unplugin-vue-components": "^28.0.0"
   },
   "dependencies": {
     "@deck.gl/core": "^9.1.0",
@@ -11,7 +13,11 @@
     "@loaders.gl/3d-tiles": "^4.2.0",
     "@loaders.gl/i3s": "^4.3.3",
     "lodash": "^4.17.21",
-    "maplibre-gl": "^5.0.0"
+    "maplibre-gl": "^5.0.0",
+    "pinia": "^2.3.1",
+    "@element-plus/icons-vue": "^2.3.1",
+    "element-plus": "^2.9.4",
+    "vue-draggable-plus": "^0.6.0"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
