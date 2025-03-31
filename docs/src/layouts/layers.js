@@ -66,7 +66,7 @@ export const layerGroup = new LayerGroup([
   }),
 
   // 高亮图层初始化为空
-  new Layer('Highlight-Layer', 1.0, true, GeoJsonLayer, {
+  new Layer('highlight-layer', 1.0, true, GeoJsonLayer, {
     data: [],
     pickable: true,
     filled: true,
