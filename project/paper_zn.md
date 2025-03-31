@@ -19,14 +19,20 @@ Given the need to visualize point cloud data in a 3D scene, a general 2D map eng
 The hybrid scene can be roughly divided into three layers. The bottom layer is the base map (data provided by OpenStreetMap, rendered by MapLibre), which is essentially a 2D roaming base map used to carry 3D point clouds and building models while providing additional geographic orientation information. The middle layer is the textured point cloud layer, which uses 3D Tiles format point cloud data to maximize high-performance rendering of realistic campus scenes. The top layer is the building model layer, which also provides interactive functions such as point selection and measurement, partially compensating for the lack of interactivity in point cloud data. In addition, it is necessary to consider introducing a lighting system into the scene to further optimize visual effects and enhance realism.
 
 
-## 4.3.1 Overview of platform development
-本项目以香港理工大学校园为例，利用激光雷达和遥感数据重建三维虚拟环境。我们主要关注于理工大学的主校区，包括 Z 栋的建筑、道路、植被和设施等。由于主校区是学生人数最多、教学资源最集中的地方，因此模型不包含离校场地，如红磡湾校区、西九龙校区、酒店 ICON 和学生宿舍等。最终，研究区域约为 9.2 公顷，位于九龙红磡育才道。第 4.1 节将介绍我们构建的三维点云和校园模型的框架和结果。然后在第 4.2 节中，我们将把我们的虚拟环境与 Google 3D 城市模型和香港政府模型进行比较。最后，在第 4.3 节中，我们将演示一个网站，我们开发了一个网站来部署建模结果以及我们平台的功能和用户交互。
+## 4.2.1 Overview of platform development
+本平台的开发技术路线如Figure ?所示，可以分为数据提供及用户界面两个大的部分。虚拟校园模型采用二三维混合的方式进行展示，故而数据及用户界面也分为对应的两部分。
 
-本项目的技术路线如上图所示（Figure ?），可以分为数据提供及用户界面两个大的部分。虚拟校园模型采用二三维混合的方式进行展示，故而数据及用户界面也分为对应的两部分。
+The development technology route of this platform is shown in Figure ?, which can be divided into two main parts: data provision and user interface. The virtual campus model is displayed in a hybrid 2D and 3D manner, so the data and user interface are also divided into corresponding two parts.
 
-数据部分，我们将数据托管在 Cesium Ion 平台上，该平台可以对外提供 3D Tiles 格式的三维数据服务。对于 3d 点云（.las），cesium 可以自动识别数据格式并实现转换。但是对于 3d 模型，我们需要在一开始就将多面体（.shp）转换为中间格式。该格式可以被 Cesium Ion 识别。然后，我们将 KML 和 .. 一起上传，并获得 3D Tiles 格式的模型。转换过程耗时较长。
+数据部分，我们将数据托管在 Cesium Ion 平台上，该平台可以对外提供 3D Tiles 格式的三维数据服务。对于 3d 点云（.las），cesium 可以自动识别数据格式并实现转换。但是对于 3d 模型，我们需要在一开始就将多面体（.shp）转换为中间格式。该格式可以被 Cesium Ion 识别。然后，我们将 .kml 和 .dae一起上传，并获得 3D Tiles 格式的模型。转换过程耗时较长。
+
+For the data part, we host the data on the Cesium Ion platform, which can provide 3D Tiles format 3D data services. For 3D point clouds (.las), Cesium can automatically recognize the data format and perform conversion. However, for 3D models, we need to convert the polyhedron (.shp) to an intermediate format from the beginning. This format can be recognized by Cesium Ion. Then, we upload .kml and .dae together and obtain the 3D Tiles format model. The conversion process takes a long time.
 
 用户界面部分，我们采用 Vue.js 作为前端框架，结合 Deck.js 和 MapLibre.js 进行二三纬混合地图组渲染，用户交互体验更加接近于传统的二维地图，易于使用。Cesium.js 具有更加真实的地球模型及光照效果，所以我们使用 Cesium.js 进行纯三维场景表现。项目采用“图层”的概念来抽象表达不同的数据类型，底图层、点云-建筑模型层及三维场景分别对应于 MapLibre.js、Deck.js 和 Cesium.js。用户可以在不同的图层之间进行切换，选择不同的视角来观察校园模型。此外，我们还设计并实现了二维界面用于非空间信息展示及参数控制。
+
+When it comes to the user interface part, we use Vue.js as the front-end framework, combined with Deck.js and MapLibre.js for rendering the mixed 2D and 3D map group, making the user interaction experience more similar to traditional 2D maps and easier to use. Cesium.js has a more realistic Earth model and lighting effects, so we use Cesium.js for pure 3D scene representation. The project uses the concept of "layers" to abstractly express different data types, with the base map layer, point cloud-building model layer, and 3D scene corresponding to MapLibre.js, Deck.js, and Cesium.js respectively. Users can switch between different layers and choose different perspectives to observe the campus model. In addition, we also designed and implemented a 2D interface for non-spatial information display and parameter control.
+
+
 
 ## 4.3.4 Building selecting and attribute viewing
 

@@ -98,7 +98,9 @@
 <script setup>
 import { ref, watch, computed } from 'vue';
 import { useDraggable } from 'vue-draggable-plus';
-import { throttle } from 'lodash';
+
+import pkg from 'lodash';
+const { throttle } = pkg;
 
 const props = defineProps({
   lightGroup: {
