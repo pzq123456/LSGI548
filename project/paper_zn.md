@@ -32,29 +32,31 @@ For the data part, we host the data on the Cesium Ion platform, which can provid
 
 When it comes to the user interface part, we use Vue.js as the front-end framework, combined with Deck.js and MapLibre.js for rendering the mixed 2D and 3D map group, making the user interaction experience more similar to traditional 2D maps and easier to use. Cesium.js has a more realistic Earth model and lighting effects, so we use Cesium.js for pure 3D scene representation. The project uses the concept of "layers" to abstractly express different data types, with the base map layer, point cloud-building model layer, and 3D scene corresponding to MapLibre.js, Deck.js, and Cesium.js respectively. Users can switch between different layers and choose different perspectives to observe the campus model. In addition, we also designed and implemented a 2D interface for non-spatial information display and parameter control.
 
+## 4.2.2 The user interface design and functionality
 
+> Figure ?: User interface of the virtual campus platform. (1) Layer control component; (2) Lighting control component; (3) Detailed information display component; (4) 2D-3D hybrid map component; (5) Information card component.
 
-## 4.3.4 Building selecting and attribute viewing
+用户界面由五部分组成，分别是：(1) 图层控制组件；(2) 光照控制组件；(3) 详细信息展示组件；(4) 二三维混合地图组件；(5) 信息卡片组件。界面采用采用数据流双向绑定及组件化设计，组件中的改动可以及时反映到地图上，地图上的操作（例如点选等）也会反作用于组件。用户可以通过图层控制组件和光照控制组件来控制三维场景的显示效果。详细信息展示组件用于展示建筑物的详细信息，二三维混合地图组件用于展示二三维混合地图，信息卡片组件用于展示建筑物的基本信息。
 
+The user interface consists of five parts: (1) Layer control component; (2) Lighting control component; (3) Detailed information display component; (4) 2D-3D hybrid map component; (5) Information card component. The interface adopts a data flow bidirectional binding and componentized design, allowing changes in the components to be reflected on the map in real-time, and operations on the map (such as point selection) to also affect the components. Users can control the display effects of the 3D scene through the layer control component and lighting control component. The detailed information display component is used to show detailed information about buildings, the 2D-3D hybrid map component is used to display the hybrid map, and the information card component is used to show basic information about buildings.
 
+> Figure?: Layer control component and Lighting control component. (a) Layer control component; (b) Lighting control component.
+ 
+The layer control component is designed to be user-friendly, allowing users to easily switch between different layers and adjust the rendering order of the layers. The layer control component can automatically trigger the re-rendering function of the map when the user switches layers, ensuring that the map is always displayed in the correct order. The layer control component also allows users to adjust the transparency of each layer, enabling them to see the underlying layers while still being able to view the top layer. This feature is particularly useful for users who want to compare different layers or see how different layers interact with each other. The lighting control component is used to control the lighting effect of the scene. Users can adjust the light source direction, intensity, and color through the lighting control component to achieve different lighting effects. All the changes made by the user will call re-rendering functions to update the map and other related components. 
 
-4.3.2 Base layer switching
-4.3.3 3D Scene rendering and switching
+前文提到的 3D Hybrid Layer (3.3.1)，该图层可以同时渲染三维点云、建筑模型及二维地图。该图层托管于 Deck.gl 对象上，该对象可以同时渲染目标图层并混合各种预设光照效果。使用该对象预留的接口可以实现对图层渲染、刷新、交互等操作的控制。二维信息组件采用两种形式展示，分别是信息卡片组件和抽屉形式的列表组件。信息卡片组件用于展示选定的建筑物的基本信息（如名称编号等），抽屉形式的列表组件可以响应地图中的点击事件，高亮被选中的建筑物，并展示建筑物的详细信息。
+
+As mentioned earlier, the 3D Hybrid Layer (3.3.1) can render 3D point clouds, building models, and 2D maps simultaneously. This layer is hosted on the Deck.gl object, which can render target layers and mix various preset lighting effects. The reserved interfaces of this object can control operations such as layer rendering, refreshing, and interaction. The 2D information component is displayed in two forms: the information card component and the drawer-style list component. The information card component is used to display basic information (such as name and ID) of the selected building, while the drawer-style list component can respond to click events on the map, highlighting the selected building and displaying detailed information about it.
+
+## 4.2.3 3D Scene rendering and switching
 RGB点云加载显示：
-
 光线追踪，模拟昼夜：
-
-4.3.4 Building selecting and attribute viewing
-
+## 4.2.4 Building selecting and attribute viewing
 
 ## 5. Expected Outcomes（想象的，展望，下一步未来怎么做等）
 
 本项目初步探索了基于 LiDAR 和遥感技术的三维虚拟校园平台构建，就三维场景下的多种数据融合、点云渲染、光照系统等问题进行了初步的探索。本项目为三维虚拟校园平台建设提供一个良好的基础，后续可以在此基础上进行进一步的探索与研究，与具体校园地理信息应用相结合，提供更为丰富的校园信息展示及交互功能。
 
-### 5.1. PolyU虚拟校园高精度三维模型
-略
-### 5.2. 一套完整的LiDAR与遥感技术应用流程
-略
 
 ### 5.3. 虚拟校园的典型应用场景展示
 

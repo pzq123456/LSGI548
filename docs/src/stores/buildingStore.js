@@ -7,7 +7,7 @@ export const useBuildingStore = defineStore('cityStore', () => {
 
   function updateSelectedBuilding(building) {
     selectedBuilding.value = building;
-    console.log('Clicked building:', building);
+    // console.log('Clicked building:', building);
   }
 
   return {

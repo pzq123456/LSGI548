@@ -53,7 +53,7 @@
             </div>
 
             <!-- 方向调节 (仅对方向光有效) -->
-            <div v-if="light.type.name === 'DirectionalLight'" class="control-row">
+            <div v-if="light.direction" class="control-row">
               <span>Direction:</span>
               <div class="direction-controls">
                 <el-input-number 
