@@ -25,7 +25,7 @@
             @toggle-collapse="toggleSidebar"
           />
 
-          <layers :layerGroup="layerGroup" :onUpdated="onUpdated" />
+          <layers :layerGroup="layerGroup" :onUpdated="updateDeckLayers" />
           <!-- <lights :lightGroup="lightGroup" :onUpdated="onLightUpdated" /> -->
         </div>
       </el-aside>
@@ -39,22 +39,42 @@
           height="80vh"
           @map-loaded="handleMapLoaded"
         />
+        <BuildingInfoPanel :selectedBuilding="selectedBuilding" />
       </el-main>
     </el-container>
   
-    <el-drawer v-model="visible" :show-close="true" :with-header="true" direction="btt" :class="'myDrawer'" :modal="false" >
-      123456
+    <el-drawer 
+      v-model="visible" 
+      :show-close="true" 
+      :with-header="false" 
+      direction="btt" 
+      :class="'myDrawer'"
+      :size="'50%'"
+       >
+      <Table></Table>
     </el-drawer>
+
   </template>
   
   <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import MapComponent from '@/components/map.vue'
 import { useDeckOverlay } from '@/composables/useDeckOverlay.js'
 import layers from '@/components/layers.vue';
 import SidebarControls from '@/components/SidebarControls.vue'
 import { layerGroup } from "@/layouts/layers.js";
-import { selectedBuilding } from "@/layouts/layers.js"; // 导入selectedBuilding
+
+import BuildingInfoPanel from '@/components/BuildingInfoPanel.vue';
+import Table from '@/components/table.vue'
+
+import { useBuildingStore } from '@/stores/buildingStore.js'
+
+
+const buildingStore = useBuildingStore()
+
+const selectedBuilding = computed(() => {
+  return buildingStore.selectedBuilding
+})
 
 // 常量定义
 const INITIAL_VIEW_STATE = {

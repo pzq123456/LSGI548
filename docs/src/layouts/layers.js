@@ -1,4 +1,4 @@
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import { LayerGroup, Layer } from '@/composables/useLayerGroup.js';
 import { Tile3DLayer } from '@deck.gl/geo-layers';
 import { GeoJsonLayer } from '@deck.gl/layers';
@@ -6,14 +6,22 @@ import { CesiumIonLoader } from '@loaders.gl/3d-tiles';
 import { CesiumION_TOKEN } from '@/env.js';
 import { data } from '@/loaders/buildings.data.js';
 
+import { useBuildingStore } from '@/stores/buildingStore.js';
+
+const buildingStore = useBuildingStore()
+
+const selectedBuilding = computed(() => {
+  return buildingStore.selectedBuilding
+})
+
+// export const selectedBuilding = ref(null);
+
 const ION_ASSET_ID = 3262885;
 const ION_TOKEN = CesiumION_TOKEN;
 const TILESET_URL = `https://assets.ion.cesium.com/${ION_ASSET_ID}/tileset.json`;
 
 const ION_ASSET_ID_2 = 3253855;
 const TILESET_URL2 = `https://assets.ion.cesium.com/${ION_ASSET_ID_2}/tileset.json`;
-
-export const selectedBuilding = ref(null);
 
 // 3D Tiles图层组
 export const layerGroup = new LayerGroup([
@@ -53,8 +61,7 @@ export const layerGroup = new LayerGroup([
     getFillColor: [140, 170, 180, 20],
     getElevation: (f) => f.properties.height || 80,
     onClick: ({object}) => {
-      selectedBuilding.value = object;
-      console.log('Clicked building:', object);
+      buildingStore.updateSelectedBuilding(object);
     },
   }),
 
