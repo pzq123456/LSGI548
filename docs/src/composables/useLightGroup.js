@@ -1,151 +1,173 @@
 import { reactive } from 'vue';
 
 export class LightEffect {
-  constructor(id, type, props = {}, enabled = true) {
+  constructor(id, color = [255, 255, 255], intensity = 1, direction = [-0.5, -1, -0.5], visible = true, type, props = {}) {
+    if (!id) throw new Error('LightEffect requires an id');
+    if (!type) throw new Error('LightEffect requires a type');
+    
     this.id = id;
-    this.state = reactive({ enabled });
     this.type = type;
-    this.props = reactive(props);
+    this.props = props;
+    
+    this.state = reactive({
+      visible: Boolean(visible),
+      color: [...color],
+      direction: reactive([...direction]), // 使方向数组响应式
+      intensity: Number(intensity),
+    });
+  }
 
-    // 确保 color 是字符串
-    if (Array.isArray(this.props.color)) {
-      this.props.colorString = this.rgbArrayToString(this.props.color);
-    } else {
-      this.props.colorString = this.props.color || 'rgb(255,255,255)';
+  get visible() {
+    return this.state.visible;
+  }
+
+  set visible(value) {
+    this.state.visible = Boolean(value);
+  }
+
+  get color() {
+    return this.state.color;
+  }
+
+  set color(value) {
+    if (!Array.isArray(value) || value.length !== 3) {
+      throw new Error('Color must be an array of 3 numbers');
     }
+    this.state.color = value;
   }
 
-  get enabled() {
-    return this.state.enabled;
+  get direction() {
+    return this.state.direction; // 直接返回响应式数组
   }
 
-  set enabled(value) {
-    this.state.enabled = value;
+  set direction(value) {
+    if (!Array.isArray(value) || value.length !== 3) {
+      throw new Error('Direction must be an array of 3 numbers');
+    }
+    this.state.direction[0] = value[0];
+    this.state.direction[1] = value[1];
+    this.state.direction[2] = value[2];
   }
 
-  /**
-   * 处理颜色更新，确保 `colorString` 与 `color` 同步
-   * @param {string} newColor - 颜色字符串 (rgb 或 hex)
-   */
-  updateColor(newColor) {
-    this.props.colorString = newColor;
-    this.props.color = this.colorStringToArray(newColor);
+  get intensity() {
+    return this.state.intensity;
   }
 
-  /**
-   * 将 RGB 数组转换为 `rgb(r,g,b)` 字符串
-   * @param {number[]} colorArray
-   * @returns {string}
-   */
-  rgbArrayToString(colorArray) {
-    return `rgb(${colorArray.join(',')})`;
-  }
-
-  /**
-   * 将颜色字符串转换为 RGB 数组
-   * @param {string} colorString
-   * @returns {number[]}
-   */
-  colorStringToArray(colorString) {
-    const match = colorString.match(/\d+/g);
-    return match ? match.map(Number) : [255, 255, 255];
-  }
-
-  toJSON() {
-    return {
-      id: this.id,
-      enabled: this.state.enabled,
-      type: this.type,
-      props: { ...this.props, color: this.props.color } // 确保 color 保持数组格式
-    };
+  set intensity(value) {
+    const num = Number(value);
+    if (num < 0) {
+      throw new Error('Intensity must be a positive number');
+    }
+    this.state.intensity = num;
   }
 }
 
+import { LightingEffect } from '@deck.gl/core';
+
 export class LightGroup {
-  constructor(effects = []) {
-    this.effects = reactive(effects);
+  constructor(layers = []) {
+    this.layers = reactive(layers);
   }
 
-  /**
-   * 添加光照效果
-   * @param {LightEffect} effect 
-   */
-  addEffect(effect) {
-    this.effects.push(effect);
+  // 添加图层
+  addLayer(layer) {
+    if (!(layer instanceof LightEffect)) {
+      throw new Error('Only LightEffect instances can be added to LightGroup');
+    }
+    this.layers.push(layer);
   }
 
-  /**
-   * 移除光照效果
-   * @param {string} effectId 
-   */
-  removeEffect(effectId) {
-    const index = this.effects.findIndex(e => e.id === effectId);
+  // 移除图层
+  removeLayer(layerId) {
+    const index = this.layers.findIndex(l => l.id === layerId);
     if (index !== -1) {
-      this.effects.splice(index, 1);
+      this.layers.splice(index, 1);
+    } else {
+      console.warn(`Layer with id ${layerId} not found`);
     }
   }
 
-  /**
-   * 设置光照效果的启用状态
-   * @param {string} effectId 
-   * @param {boolean} enabled 
-   */
-  setEffectEnabled(effectId, enabled) {
-    const effect = this.effects.find(e => e.id === effectId);
-    if (effect) {
-      effect.enabled = enabled;
+  // 更新图层的可见性
+  setVisibility(layerId, visible) {
+    const layer = this.layers.find(l => l.id === layerId);
+    if (layer) {
+      layer.visible = Boolean(visible);
+    } else {
+      console.warn(`Layer with id ${layerId} not found`);
     }
   }
 
-  /**
-   * 更新光照效果的参数
-   * @param {string} effectId 
-   * @param {object} newProps 
-   */
-  updateEffectProps(effectId, newProps) {
-    const effect = this.effects.find(e => e.id === effectId);
-    if (effect) {
-      Object.assign(effect.props, newProps);
+  // 更新光照强度
+  setIntensity(layerId, intensity) {
+    const layer = this.layers.find(l => l.id === layerId);
+    if (layer) {
+      layer.intensity = intensity;
+    } else {
+      console.warn(`Layer with id ${layerId} not found`);
     }
   }
 
-  /**
-   * 获取所有启用的光照效果，用于 DeckGL 的光照系统
-   * @returns {Array} 启用的光照效果数组
-   */
-  getEnabledEffects() {
-    return this.effects
-      .filter(effect => effect.enabled)
-      .map(effect => {
-        return {
-          id: effect.id,
-          type: effect.type,
-          ...effect.props
-        };
+  // 更新光照颜色
+  setColor(layerId, color) {
+    const layer = this.layers.find(l => l.id === layerId);
+    if (layer) {
+      layer.color = color;
+    } else {
+      console.warn(`Layer with id ${layerId} not found`);
+    }
+  }
+
+  // 更新光照方向
+  setDirection(layerId, direction) {
+    const layer = this.layers.find(l => l.id === layerId);
+    if (layer) {
+      layer.direction = direction;
+    } else {
+      console.warn(`Layer with id ${layerId} not found`);
+    }
+  }
+
+  // 设置图层顺序（支持拖拽）
+  setLayerOrder(newOrder) {
+    if (!Array.isArray(newOrder)) {
+      throw new Error('newOrder must be an array');
+    }
+    
+    // 验证所有图层ID都存在
+    const existingIds = this.layers.map(l => l.id);
+    const invalidIds = newOrder.filter(id => !existingIds.includes(id));
+    if (invalidIds.length > 0) {
+      throw new Error(`Invalid layer IDs: ${invalidIds.join(', ')}`);
+    }
+
+    // 重新排序
+    const newLayers = newOrder.map(id => this.layers.find(l => l.id === id));
+    this.layers.length = 0;
+    this.layers.push(...newLayers);
+  }
+
+  // 根据图层类型和属性生成 DeckGL 光照效果
+  getLightingEffect() {
+    const lights = {};
+    
+    this.layers
+      .filter(layer => layer.visible)
+      .forEach(layer => {
+        const LayerType = layer.type;
+        lights[layer.id] = new LayerType({
+          color: layer.color,
+          direction: layer.direction,
+          intensity: layer.intensity,
+          ...layer.props,
+        });
       });
-  }
 
-  /**
-   * 获取所有光照效果的 JSON 表示
-   * @returns {Array} 光照效果的 JSON 数组
-   */
-  toJSON() {
-    return this.effects.map(effect => effect.toJSON());
-  }
+      // 若 lights 为空则返回空数组
+      if (Object.keys(lights).length === 0) {
+        return [];
+      }
 
-  /**
-   * 从 JSON 数据加载光照效果
-   * @param {Array} effectsData 
-   */
-  loadFromJSON(effectsData) {
-    this.effects.length = 0;
-    effectsData.forEach(data => {
-      this.effects.push(new LightEffect(
-        data.id,
-        data.type,
-        data.props,
-        data.enabled
-      ));
-    });
+
+    return [new LightingEffect(lights)];
   }
 }

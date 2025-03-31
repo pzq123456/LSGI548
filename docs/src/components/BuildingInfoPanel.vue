@@ -25,7 +25,7 @@
         position: absolute;
         top: 5px;
         right: 5px;
-        backdrop-filter: blur(18px); /* 添加背景模糊效果 */
+        background-color: var(--vp-c-bg-alt); /* 添加背景色 */
         border: 1px solid var(--vp-c-border);
         padding: 15px;
         color: var(--vp-c-text-1);

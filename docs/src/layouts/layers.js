@@ -25,21 +25,7 @@ const TILESET_URL2 = `https://assets.ion.cesium.com/${ION_ASSET_ID_2}/tileset.js
 
 // 3D Tiles图层组
 export const layerGroup = new LayerGroup([
-  new Layer('tile-3d-layer', 1.0, true, Tile3DLayer, {
-    pointSize: 3,
-    pickable: false,
-    data: TILESET_URL,
-    loader: CesiumIonLoader,
-    loadOptions: { 'cesium-ion': { accessToken: ION_TOKEN } },
-    material: {
-      ambient: 0.5,
-      diffuse: 0.6,
-      shininess: 32,
-      specularColor: [255, 255, 255]
-    }
-  }),
-
-  new Layer('Point-Cloud-layer', 1.0, true, Tile3DLayer, {
+  new Layer('Point-Cloud-Layer', 1.0, true, Tile3DLayer, {
     pointSize: 3,
     pickable: false,
     data: TILESET_URL2,
@@ -53,7 +39,21 @@ export const layerGroup = new LayerGroup([
     }
   }),
 
-  new Layer('geojson-layer', 1.0, true, GeoJsonLayer, {
+  new Layer('Building-Model-Layer', 1.0, false, Tile3DLayer, { // 默认不显示
+    pointSize: 3,
+    pickable: false,
+    data: TILESET_URL,
+    loader: CesiumIonLoader,
+    loadOptions: { 'cesium-ion': { accessToken: ION_TOKEN } },
+    material: {
+      ambient: 0.5,
+      diffuse: 0.6,
+      shininess: 32,
+      specularColor: [255, 255, 255]
+    }
+  }),
+
+  new Layer('GeoJSON-Layer', 1.0, true, GeoJsonLayer, {
     data: data,
     pickable: true,
     filled: true,
@@ -66,7 +66,7 @@ export const layerGroup = new LayerGroup([
   }),
 
   // 高亮图层初始化为空
-  new Layer('highlight-layer', 1.0, true, GeoJsonLayer, {
+  new Layer('Highlight-Layer', 1.0, true, GeoJsonLayer, {
     data: [],
     pickable: true,
     filled: true,

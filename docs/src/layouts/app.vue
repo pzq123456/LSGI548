@@ -1,19 +1,20 @@
 <template>
-    <el-container>
-      <!-- 侧边栏折叠按钮（仅在侧边栏折叠时显示） -->
-      <div v-if="isSidebarCollapsed" class="sidebar-collapse-button" @click="toggleSidebar">
-        <el-icon :size="20">
-          <Expand />
-        </el-icon>
-      </div>
-  
-      <!-- 侧边栏 -->
-      <el-aside 
-        v-if="!isFullScreen" 
-        :width="isSidebarCollapsed ? '0px' : '250px'" 
-        class="sidebar"
-        :class="{ 'sidebar-collapsed': isSidebarCollapsed }"
-      >
+  <el-container>
+    <!-- 侧边栏折叠按钮（仅在侧边栏折叠时显示） -->
+    <div v-if="isSidebarCollapsed" class="sidebar-collapse-button" @click="toggleSidebar">
+      <el-icon :size="20">
+        <Expand />
+      </el-icon>
+    </div>
+
+    <!-- 侧边栏 -->
+    <el-aside 
+      v-if="!isFullScreen" 
+      :width="isSidebarCollapsed ? '0px' : '300px'" 
+      class="sidebar"
+      :class="{ 'sidebar-collapsed': isSidebarCollapsed }"
+    >
+      <el-scrollbar class="sidebar-scrollbar" always>
         <!-- 侧边栏内容 -->
         <div class="sidebar-content">
           <SidebarControls
@@ -26,49 +27,54 @@
           />
 
           <layers :layerGroup="layerGroup" :onUpdated="updateDeckLayers" />
-          <!-- <lights :lightGroup="lightGroup" :onUpdated="onLightUpdated" /> -->
+          <lights :lightGroup="lightGroup" :onUpdated="updateDeckLayers" />
         </div>
-      </el-aside>
-  
-      <el-main style="padding: 2px;">
-        <MapComponent
-          :center="[initialViewState.longitude, initialViewState.latitude]"
-          :zoom="initialViewState.zoom"
-          :pitch="initialViewState.pitch"
-          width="100%"
-          height="80vh"
-          @map-loaded="handleMapLoaded"
-        />
-        <BuildingInfoPanel :selectedBuilding="selectedBuilding" />
-      </el-main>
-    </el-container>
-  
-    <el-drawer 
-      v-model="visible" 
-      :show-close="true" 
-      :with-header="false" 
-      direction="btt" 
-      :class="'myDrawer'"
-      :size="'50%'"
-       >
-      <Table></Table>
-    </el-drawer>
+      </el-scrollbar>
+    </el-aside>
 
-  </template>
-  
+    <el-main style="padding: 2px;">
+      <MapComponent
+        :center="[initialViewState.longitude, initialViewState.latitude]"
+        :zoom="initialViewState.zoom"
+        :pitch="initialViewState.pitch"
+        width="100%"
+        height="80vh"
+        @map-loaded="handleMapLoaded"
+      />
+      <BuildingInfoPanel :selectedBuilding="selectedBuilding" />
+    </el-main>
+  </el-container>
+
+  <el-drawer 
+    v-model="visible" 
+    :show-close="true" 
+    :with-header="false" 
+    direction="btt" 
+    :class="'myDrawer'"
+    :size="'50%'"
+  >
+    <Table></Table>
+  </el-drawer>
+</template>
+
   <script setup>
 import { ref, watch, computed } from 'vue'
 import MapComponent from '@/components/map.vue'
 import { useDeckOverlay } from '@/composables/useDeckOverlay.js'
+
 import layers from '@/components/layers.vue';
+import lights from '@/components/lights.vue';
+
+
 import SidebarControls from '@/components/SidebarControls.vue'
+
 import { layerGroup } from "@/layouts/layers.js";
+import { lightGroup } from "@/layouts/lights.js";
 
 import BuildingInfoPanel from '@/components/BuildingInfoPanel.vue';
 import Table from '@/components/table.vue'
 
 import { useBuildingStore } from '@/stores/buildingStore.js'
-
 
 const buildingStore = useBuildingStore()
 
@@ -113,6 +119,7 @@ const updateDeckLayers = () => {
   if (deckMap) {
     deckMap.setProps({
       layers: layerGroup.getLayers(),
+      effects: lightGroup.getLightingEffect(),
     })
   }
 }
@@ -128,26 +135,31 @@ watch(selectedBuilding, (newBuilding) => {
   </script>
   
   <style>
-  .myDrawer {
-    background-color: var(--vp-c-bg);
-    border: 1px solid var(--vp-c-border);
-  }
-  
   .sidebar {
     transition: width 0.3s ease;
-    overflow: hidden;
     position: relative;
+    height: 80vh; /* 确保侧边栏高度占满整个视口 */
+    display: flex; /* 添加flex布局 */
+    border: 1px solid var(--vp-c-border);
   }
   
   .sidebar-collapsed {
     width: 0 !important;
+    overflow: hidden;
+  }
+  
+  .sidebar-scrollbar {
+    height: 100%; /* 滚动条容器占满侧边栏高度 */
+    width: 100%; /* 滚动条容器占满侧边栏宽度 */
   }
   
   .sidebar-content {
-    width: 250px;
-    height: 100%;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    gap: 10px; /* 为子元素添加间隔 */
   }
   
   .sidebar-collapse-button {
@@ -171,5 +183,10 @@ watch(selectedBuilding, (newBuilding) => {
   
   .sidebar-collapse-button:hover {
     background-color: var(--vp-c-bg-alt);
+  }
+  
+  .myDrawer {
+    background-color: var(--vp-c-bg);
+    border: 1px solid var(--vp-c-border);
   }
   </style>
