@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar-controls">
+    
     <el-tooltip content="Full Screen" placement="top">
       <el-icon @click="toggleFullScreen" class="control-icon">
-        <FullScreen v-if="!isFullScreen" />
-        <Close v-else />
+        <FullScreen />
       </el-icon>
     </el-tooltip>
 
@@ -14,12 +14,13 @@
       </el-icon>
 
     
-    <el-tooltip :content="isCollapsed ? 'Expand' : 'Collapse'" placement="top">
+    <!-- <el-tooltip :content="isCollapsed ? 'Expand' : 'Collapse'" placement="top">
       <el-icon @click="toggleCollapse" class="control-icon">
         <Fold v-if="!isCollapsed" />
         <Expand v-else />
       </el-icon>
-    </el-tooltip>
+    </el-tooltip> -->
+
   </div>
 </template>
 

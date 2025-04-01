@@ -9,7 +9,6 @@
 
     <!-- 侧边栏 -->
     <el-aside 
-      v-if="!isFullScreen" 
       :width="isSidebarCollapsed ? '0px' : '300px'" 
       class="sidebar"
       :class="{ 'sidebar-collapsed': isSidebarCollapsed }"
@@ -18,7 +17,6 @@
         <!-- 侧边栏内容 -->
         <div class="sidebar-content">
           <SidebarControls
-            :is-full-screen="isFullScreen"
             :is-drawer-visible="visible"
             :is-collapsed="isSidebarCollapsed"
             @toggle-fullscreen="toggleFullScreen"
@@ -93,7 +91,7 @@ const INITIAL_VIEW_STATE = {
 // 响应式状态
 const initialViewState = ref(INITIAL_VIEW_STATE)
 const visible = ref(false)
-const isFullScreen = ref(false)
+
 const isSidebarCollapsed = ref(false)
 let deckMap = null
 
@@ -103,7 +101,7 @@ const toggleSidebar = () => {
 }
 
 const toggleFullScreen = () => {
-  isFullScreen.value = !isFullScreen.value
+  isSidebarCollapsed.value = !isSidebarCollapsed.value
 }
 
 const toggleDrawer = () => {

@@ -48,6 +48,12 @@ The layer control component is designed to be user-friendly, allowing users to e
 
 As mentioned earlier, the 3D Hybrid Layer (3.3.1) can render 3D point clouds, building models, and 2D maps simultaneously. This layer is hosted on the Deck.gl object, which can render target layers and mix various preset lighting effects. The reserved interfaces of this object can control operations such as layer rendering, refreshing, and interaction. The 2D information component is displayed in two forms: the information card component and the drawer-style list component. The information card component is used to display basic information (such as name and ID) of the selected building, while the drawer-style list component can respond to click events on the map, highlighting the selected building and displaying detailed information about it.
 
+> Figure?: Day and night simulation. (a) Daytime scene; (b) Nighttime scene.
+
+用户可以通过控制光照参数来实现昼夜模拟效果。该功能可以通过调整光源的方向、强度和颜色来实现。例如，日间阳光为白色平行光，照射角度大约在一定的范围内，光源强度较大；而夜间则可以模拟月光或路灯的照射，光源强度较小，颜色偏蓝。此外，若有路灯或其他光源的地理位置，用户还可以添加点光源以模拟夜间人造光源发光效果，最大限度营造真实感。
+
+The user can achieve a day-night simulation effect by controlling lighting parameters. This function can be implemented by adjusting the direction, intensity, and color of the light source. For example, during the daytime, sunlight is white parallel light with an angle of incidence within a certain range and high intensity; at night, moonlight or streetlight illumination can be simulated with lower intensity and a bluish color. In addition, if there are geographic locations of streetlights or other light sources, point light sources can be added to simulate the glowing effect of artificial light sources at night, maximizing realism.
+
 ## 4.2.3 3D Scene rendering and switching
 RGB点云加载显示：
 光线追踪，模拟昼夜：
@@ -82,3 +88,33 @@ For emergency situations such as fires and earthquakes, the virtual campus platf
 The 3D virtual campus platform has many unique advantages. Compared to 2D maps, it can provide a more intuitive spatial information transmission and interactive experience. For alumni, virtual campus tours can help them relive their campus days and recall the moments spent on campus. For new students, virtual campus tours can help them quickly familiarize themselves with the campus environment and understand the school's facilities and resources. For external visitors, virtual campus tours can help them better understand the school's history, culture, architecture, and other information. It can be said that the virtual campus platform can completely become a twin campus in the metaverse world, providing an experience and functionality comparable to that of a real campus.
 
 high precision campus vector data, 3D point cloud data, and virtual campus platform can also be used in other fields. For example, they can be used in urban planning, disaster prevention and mitigation, environmental monitoring, and other fields. The virtual campus platform can provide a more intuitive and interactive experience for users in these fields, helping them better understand the spatial information and make better decisions.
+
+
+
+## 1. Introduction (可以增加一个框图)
+
+研究背景 (Background) 
+LiDAR技术与遥感技术简介
+虚拟校园建设的必要性与应用场景
+
+研究目的 (Objectives) 
+构建精准、高效的PolyU校园三维虚拟模型
+探索LiDAR与遥感技术在高校数字化建设中的潜力
+
+研究意义 (Significance) 
+促进校园管理与规划、虚拟仿真教育、以及增强现实（AR）应用
+
+2. Literature Review
+LiDAR技术的原理与发展现状
+
+The principle and development status of LiDAR technology
+
+遥感技术在建筑三维建模与地物分类中的应用
+
+The application of remote sensing technology in 3D modeling and object classification
+
+虚拟校园建设案例分析（国内外高校的经验）
+
+The analysis of virtual campus construction cases (experiences of domestic and foreign universities)
+
+PolyU校园现有三维数据或地理空间信息建设现状
