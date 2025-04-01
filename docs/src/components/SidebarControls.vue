@@ -61,6 +61,10 @@ const toggleCollapse = () => emit('toggle-collapse')
   border: 1px solid var(--vp-c-border);
   background-color: var(--vp-c-bg);
   margin-top: 2px;
+  /* 固定在顶部 不随滚动条移动 */
+  position: sticky;
+  top: 2px;
+  z-index: 2;
 }
 
 .control-icon {

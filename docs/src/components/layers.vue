@@ -3,9 +3,12 @@
     <div class="header-controls">
       <!-- 折叠/展开图层列表按钮 -->
       <el-tooltip content="Expand all layers" placement="top">
-        <el-icon @click="toggleAllDetails"><Switch /></el-icon>
+        <el-icon @click="toggleAllDetails">
+          <component :is="layerGroup.layers.every(layer => layer.isExpanded) ? 'Minus' : 'Plus'" />
+        </el-icon>
       </el-tooltip>
 
+      <span class="name"> Layer Control </span>
       <el-tooltip content="Expand Layer List" placement="top">
         <el-icon @click="toggleLayerList" :class="{ 'expanded' : !isLayerListVisible }"><ArrowUpBold /></el-icon>
       </el-tooltip>
@@ -142,16 +145,15 @@ const draggable = useDraggable(el, layerGroup.layers, {
 
 <style scoped>
 
-/* 动画效果 */
-/* .v-enter-active,
-.v-leave-active {
-  transition: opacity 0.3s ease;
+.name{  
+  font-size: 1rem;
+  color: var(--vp-c-text-3);
 }
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-} */
+.name:hover {
+  color: var(--vp-c-text-1);
+  transition: color 0.3s ease;
+}
 
 .container {
   /* 上部margin 5px */

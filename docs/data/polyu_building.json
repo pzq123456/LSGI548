@@ -66,7 +66,7 @@
           "fclass": "building",
           "name": "B棟 Core B",
           "type": "university",
-          "height": 50
+          "height": 45
         }
       },
       {
@@ -110,7 +110,7 @@
           "fclass": "building",
           "name": "J棟 Core J",
           "type": "university",
-          "height": 50
+          "height": 40
         }
       },
       {
@@ -516,7 +516,7 @@
           "fclass": "building",
           "name": "F棟 Core F",
           "type": "university",
-          "height": 50
+          "height": 40
         }
       },
       {
@@ -602,7 +602,7 @@
           "fclass": "building",
           "name": "R棟 Core R",
           "type": "university",
-          "height": 50
+          "height": 60
         }
       },
       {
@@ -1233,7 +1233,7 @@
           "fclass": "building",
           "name": "BC翼 BC Wing",
           "type": "university",
-          "height": 30
+          "height": 40
         }
       },
       {
@@ -1320,7 +1320,7 @@
           "fclass": "building",
           "name": "陳瑞槐樓 Chan Sui Wai Building",
           "type": "university",
-          "height": 50
+          "height": 45
         }
       },
       {
@@ -1366,7 +1366,7 @@
           "fclass": "building",
           "name": "陳大河樓 Chan Tai Ho Building",
           "type": "university",
-          "height": 50
+          "height": 40
         }
       },
       {
@@ -1496,7 +1496,7 @@
           "fclass": "building",
           "name": "GH平台附屬樓 GH Podium Annexe",
           "type": "university",
-          "height": 30
+          "height": 20
         }
       },
       {
@@ -1651,7 +1651,7 @@
           "fclass": "building",
           "name": "邵逸夫樓 Shaw Amenities Building",
           "type": "university",
-          "height": 20
+          "height": 25
         }
       },
       {
@@ -1721,7 +1721,7 @@
           "fclass": "building",
           "name": "何鴻燊樓 Stanley Ho Building",
           "type": "university",
-          "height": 40
+          "height": 45
         }
       },
       {
@@ -1762,7 +1762,7 @@
           "fclass": "building",
           "name": "唐炳源樓 Tang Ping Yuan Building",
           "type": "university",
-          "height": 50
+          "height": 45
         }
       },
       {
@@ -1823,7 +1823,7 @@
           "fclass": "building",
           "name": "賽馬會創新樓 Jockey Club Innovation Tower",
           "type": "university",
-          "height": 80
+          "height": 70
         }
       },
       {

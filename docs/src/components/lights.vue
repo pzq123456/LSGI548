@@ -3,8 +3,13 @@
   <div class="light-container">
     <div class="header-controls">
       <el-tooltip content="Expand all lights" placement="top">
-        <el-icon @click="toggleAllDetails"><Lightning /></el-icon>
+        <el-icon @click="toggleAllDetails">
+          <component :is="lightGroup.layers.every(light => light.isExpanded) ? 'Minus' : 'Plus'" />
+        </el-icon>
       </el-tooltip>
+
+      <!-- layers -->
+       <span class="name"> Light Control </span>
 
       <el-tooltip content="Expand Light List" placement="top">
         <el-icon @click="toggleLightList" :class="{ 'expanded' : !isLightListVisible }"><ArrowUpBold /></el-icon>
@@ -20,6 +25,7 @@
         :style="{ border: light.visible ? '1px solid var(--vp-c-brand-2)' : '1px solid var(--vp-c-default-3)' }"
       >
         <div class="light-header" @click="toggleExpand(light.id)">
+          <el-icon><Rank /></el-icon>
           <el-icon @click.stop="toggleVisibility(light)">
             <component :is="light.visible ? 'View' : 'Hide'" />
           </el-icon>
@@ -35,7 +41,6 @@
               <el-color-picker 
                 v-model="light.colorString"
                 :disabled="!light.visible"
-                show-alpha
               />
             </div>
 
@@ -53,14 +58,14 @@
             </div>
 
             <!-- 方向调节 (仅对方向光有效) -->
-            <div v-if="light.direction" class="control-row">
+            <div v-if="light.id === 'Directional'" class="control-row">
               <span>Direction:</span>
               <div class="direction-controls">
                 <el-input-number 
                   v-model="light.direction[0]" 
                   :min="-1" 
                   :max="1" 
-                  :step="0.1"
+                  :step="0.05"
                   :disabled="!light.visible"
                   size="small"
                 />
@@ -68,7 +73,7 @@
                   v-model="light.direction[1]" 
                   :min="-1" 
                   :max="1" 
-                  :step="0.1"
+                  :step="0.05"
                   :disabled="!light.visible"
                   size="small"
                 />
@@ -76,7 +81,7 @@
                   v-model="light.direction[2]" 
                   :min="-1" 
                   :max="1" 
-                  :step="0.1"
+                  :step="0.05"
                   :disabled="!light.visible"
                   size="small"
                 />
@@ -193,6 +198,17 @@ const draggable = useDraggable(el, lightGroup.layers, {
 </script>
 
 <style scoped>
+
+.name{  
+  font-size: 1rem;
+  color: var(--vp-c-text-3);
+}
+
+.name:hover {
+  color: var(--vp-c-text-1);
+  transition: color 0.3s ease;
+}
+
 .light-container {
   margin: 1px;
   display: flex;

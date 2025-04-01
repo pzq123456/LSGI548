@@ -36,7 +36,7 @@
         :zoom="initialViewState.zoom"
         :pitch="initialViewState.pitch"
         width="100%"
-        height="80vh"
+        height="83vh"
         @map-loaded="handleMapLoaded"
       />
       <BuildingInfoPanel :selectedBuilding="selectedBuilding" />
@@ -136,7 +136,7 @@ watch(selectedBuilding, (newBuilding) => {
   .sidebar {
     transition: width 0.3s ease;
     position: relative;
-    height: 80vh; /* 确保侧边栏高度占满整个视口 */
+    height: 83vh; /* 确保侧边栏高度占满整个视口 */
     display: flex; /* 添加flex布局 */
     border: 1px solid var(--vp-c-border);
   }

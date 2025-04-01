@@ -4,7 +4,7 @@ import { AmbientLight, DirectionalLight } from '@deck.gl/core';
 // 创建响应式光照组
 export const lightGroup = new LightGroup([
   new LightEffect(
-    'ambient-light',
+    'Ambient',
     [255, 255, 255], // color
     3,               // intensity
     [-0.5, -1, -0.5], // direction
@@ -13,7 +13,7 @@ export const lightGroup = new LightGroup([
     {}               // props
   ),
   new LightEffect(
-    'directional-light',
+    'Directional',
     [255, 255, 255], // color
     3,             // intensity
     [-0.5, -1, -0.5], // direction
