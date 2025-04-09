@@ -39,7 +39,7 @@ const members = [
     id: '24049994G',
     avatar: 'Yao Zhiwen.jpg',
     name: 'Yao Zhiwen',
-    title: 'Data Acquisition & Methodology',
+    title: 'Data Acquisition & 3D Model Construction and Refinement',
     coreResponsibilities: ['LiDAR Data', 'Remote Sensing', 'Data Processing'],
     links: []
   },
@@ -47,7 +47,7 @@ const members = [
     id: '24084485G',
     avatar: 'Li Kexuan.jpg',
     name: 'Li Kexuan',
-    title: '3D Modeling Visualization & Methodology',
+    title: 'Methodology & Data Processing',
     coreResponsibilities: ['3D Modeling', 'Visualization', 'Quality Control'],
     links: []
   },
